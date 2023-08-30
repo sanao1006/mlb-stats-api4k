@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.9.0"
     application
+    id("com.github.ben-manes.versions") version "0.47.0"
+    id("nl.littlerobots.version-catalog-update") version "0.8.0"
 }
 
 group = "com.api"

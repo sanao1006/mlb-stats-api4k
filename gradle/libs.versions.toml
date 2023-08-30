@@ -1,0 +1,17 @@
+[libraries]
+org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:2.17.1"
+org-jetbrains-annotations = "org.jetbrains:annotations:13.0"
+org-jetbrains-kotlin-kotlin-build-tools-impl = "org.jetbrains.kotlin:kotlin-build-tools-impl:1.9.0"
+org-jetbrains-kotlin-kotlin-compiler-embeddable = "org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0"
+org-jetbrains-kotlin-kotlin-klib-commonizer-embeddable = "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable:1.9.0"
+org-jetbrains-kotlin-kotlin-reflect = "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+org-jetbrains-kotlin-kotlin-stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
+org-jetbrains-kotlin-kotlin-stdlib-common = "org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10"
+org-jetbrains-kotlin-kotlin-stdlib-jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
+org-jetbrains-kotlin-kotlin-stdlib-jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10"
+org-jetbrains-kotlin-kotlin-test = "org.jetbrains.kotlin:kotlin-test:1.9.0"
+
+[plugins]
+com-github-ben-manes-versions = "com.github.ben-manes.versions:0.47.0"
+nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.0"
+org-jetbrains-kotlin-jvm = "org.jetbrains.kotlin.jvm:1.9.0"
