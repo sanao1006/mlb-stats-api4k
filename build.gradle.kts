@@ -17,6 +17,7 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.kotlinx.coroutines)
     implementation(libs.ktorfit)
     testImplementation(kotlin("test"))
 }
