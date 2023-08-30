@@ -1,3 +1,6 @@
+[versions]
+ktorfit = "1.6.0"
+
 [libraries]
 org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:2.17.1"
 org-jetbrains-annotations = "org.jetbrains:annotations:13.0"
@@ -10,6 +13,7 @@ org-jetbrains-kotlin-kotlin-stdlib-common = "org.jetbrains.kotlin:kotlin-stdlib-
 org-jetbrains-kotlin-kotlin-stdlib-jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
 org-jetbrains-kotlin-kotlin-stdlib-jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10"
 org-jetbrains-kotlin-kotlin-test = "org.jetbrains.kotlin:kotlin-test:1.9.0"
+ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
 
 [plugins]
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.47.0"

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.kpm.external.project
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.libsDirectory
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -15,6 +17,7 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.ktorfit)
     testImplementation(kotlin("test"))
 }
 
