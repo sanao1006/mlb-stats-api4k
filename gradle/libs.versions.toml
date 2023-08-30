@@ -1,6 +1,7 @@
 [versions]
 ktorfit = "1.6.0"
 coroutines = "1.7.3"
+moshi = "1.14.0"
 
 [libraries]
 org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:2.17.1"
@@ -16,6 +17,7 @@ org-jetbrains-kotlin-kotlin-stdlib-jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jd
 org-jetbrains-kotlin-kotlin-test = "org.jetbrains.kotlin:kotlin-test:1.9.0"
 ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines"  }
+moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 
 [plugins]
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.47.0"
