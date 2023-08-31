@@ -14,6 +14,7 @@ import response.Sports
 import response.SportsResponse
 import response.Team
 import response.TeamsResponse
+import response.schedule.postseason.SchedulePostseasonResponse
 import response.shedule.postseason.series.SchedulePostseasonSeriesResponse
 
 class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
@@ -72,5 +73,14 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
         val responseBody = client(Request(Method.GET, "$apiHost/schedule/postseason/series")).body.toString()
         val schedulePostseasonSeriesAdapter = moshi.adapter<SchedulePostseasonSeriesResponse>(SchedulePostseasonSeriesResponse::class.java)
         return schedulePostseasonSeriesAdapter.fromJson(responseBody)!!
+    }
+
+    /**
+     * Endpoint `/schedule/postseason`
+     */
+    override fun getSchedulePostseason(): SchedulePostseasonResponse {
+        val responseBody = client(Request(Method.GET, "$apiHost/schedule/postseason")).body.toString()
+        val schedulePostseasonAdapter = moshi.adapter<SchedulePostseasonResponse>(SchedulePostseasonResponse::class.java)
+        return schedulePostseasonAdapter.fromJson(responseBody)!!
     }
 }
