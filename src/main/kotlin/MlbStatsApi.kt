@@ -1,4 +1,5 @@
 import response.*
+import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
@@ -12,4 +13,5 @@ interface MlbStatsApi {
     fun getSchedulePostseasonSeries(): SchedulePostseasonSeriesResponse
     fun getSchedulePostseason(): SchedulePostseasonResponse
     fun getJobsUmpires(): JobsUmpiresResponse
+    fun getJobsDatacasters(): JobsDatacastersResponse
 }
