@@ -17,17 +17,17 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
      * Endpoint `/awards`
      */
     override fun getAwards(): List<Award> {
-        val request = client(Request(Method.GET, "$apiHost/awards")).body.toString()
+        val responseBody = client(Request(Method.GET, "$apiHost/awards")).body.toString()
         val awardsAdapter =  moshi.adapter<AwardsResponse>(AwardsResponse::class.java)
-        return awardsAdapter.fromJson(request)!!.awards
+        return awardsAdapter.fromJson(responseBody)?.awards.orEmpty()
     }
 
     /**
      * Endpoint `conferences`
      */
     override fun getConferences(): List<Conference> {
-        val request = client(Request(Method.GET, "$apiHost/conferences")).body.toString()
+        val responseBody = client(Request(Method.GET, "$apiHost/conferences")).body.toString()
         val conferencesAdapter = moshi.adapter<ConferencesResponse>(ConferencesResponse::class.java)
-        return conferencesAdapter.fromJson(request)!!.conferences
+        return conferencesAdapter.fromJson(responseBody)?.conferences.orEmpty()
     }
 }
