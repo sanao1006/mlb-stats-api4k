@@ -7,6 +7,7 @@ import org.http4k.core.Request
 import response.Award
 import response.AwardsResponse
 import response.Conference
+import response.ConferencesResponse
 
 class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -25,6 +26,8 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
      * Endpoint `conferences`
      */
     override fun getConferences(): List<Conference> {
-        TODO("Not yet implemented")
+        val request = client(Request(Method.GET, "$apiHost/conferences")).body.toString()
+        val conferencesAdapter = moshi.adapter<ConferencesResponse>(ConferencesResponse::class.java)
+        return conferencesAdapter.fromJson(request)!!.conferences
     }
 }
