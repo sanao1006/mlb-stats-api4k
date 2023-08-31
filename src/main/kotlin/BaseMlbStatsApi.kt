@@ -101,4 +101,4 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 }
 
-class MlbStatsApiImpl(apiHost: String): BaseMlbStatsApi(apiHost)
+class MlbStatsApiImpl(apiHost: String) : BaseMlbStatsApi(apiHost)
