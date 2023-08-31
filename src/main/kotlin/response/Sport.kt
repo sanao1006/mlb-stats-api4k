@@ -9,5 +9,7 @@ data class Sport(
     @Json(name = "id")
     val id: Int,
     @Json(name = "link")
-    val link: String
+    val link: String,
+    @Json(name = "name")
+    val name: String?
 )
