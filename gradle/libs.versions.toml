@@ -1,5 +1,4 @@
 [versions]
-ktorfit = "1.6.0"
 coroutines = "1.7.3"
 moshi = "1.14.0"
 
