@@ -15,6 +15,7 @@ import response.SportsResponse
 import response.Team
 import response.TeamsResponse
 import response.jobs.datacasters.JobsDatacastersResponse
+import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
@@ -90,6 +91,13 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      */
     override fun getJobsDatacasters(): JobsDatacastersResponse {
         return fetchDataFromApi("jobs/datacasters")
+    }
+
+    /**
+     * Endpoint `/jobs/officialScorers`
+     */
+    override fun getJobsOfficialScorers(): JobsOfficialScorersResponse {
+        return fetchDataFromApi("jobs/officialScorers")
     }
 }
 

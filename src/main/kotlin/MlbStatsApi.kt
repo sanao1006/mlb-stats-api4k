@@ -1,5 +1,6 @@
 import response.*
 import response.jobs.datacasters.JobsDatacastersResponse
+import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
@@ -49,4 +50,9 @@ interface MlbStatsApi {
      * Endpoint `/jobs/datacasters`
      */
     fun getJobsDatacasters(): JobsDatacastersResponse
+
+    /**
+     * Endpoint `/jobs/officialScorers`
+     */
+    fun getJobsOfficialScorers(): JobsOfficialScorersResponse
 }
