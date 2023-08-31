@@ -22,6 +22,8 @@ data class Division(
     val name: String,
     @Json(name = "nameShort")
     val nameShort: String,
+    @Json(name = "numPlayoffTeams")
+    val numPlayoffTeams: Int?,
     @Json(name = "season")
     val season: String,
     @Json(name = "sortOrder")
