@@ -7,13 +7,13 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Award(
     @Json(name = "description")
-    val description: String,
+    val description: String?,
     @Json(name = "id")
     val id: String,
     @Json(name = "name")
     val name: String,
     @Json(name = "sortOrder")
-    val sortOrder: Int,
+    val sortOrder: Int?,
     @Json(name = "sport")
-    val sport: Sport
+    val sport: Sport?
 )
