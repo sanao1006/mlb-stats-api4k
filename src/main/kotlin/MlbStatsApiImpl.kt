@@ -10,6 +10,9 @@ import response.Conference
 import response.ConferencesResponse
 import response.Division
 import response.DivisionsResponse
+import response.Sports
+import response.SportsResponse
+
 class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
     private val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
@@ -39,5 +42,14 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
         val responseBody = client(Request(Method.GET, "$apiHost/divisions")).body.toString()
         val divisionsAdapter = moshi.adapter<DivisionsResponse>(DivisionsResponse::class.java)
         return divisionsAdapter.fromJson(responseBody)?.divisions.orEmpty()
+    }
+
+    /**
+     * Endpoint `/sports`
+     */
+    override fun getSports(): List<Sports> {
+        val responseBody = client(Request(Method.GET,"$apiHost/sports")).body.toString()
+        val sportsAdapter = moshi.adapter<SportsResponse>(SportsResponse::class.java)
+        return sportsAdapter.fromJson(responseBody)?.sports.orEmpty()
     }
 }
