@@ -1,4 +1,5 @@
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.http4k.client.JavaHttpClient
 import org.http4k.core.HttpHandler
@@ -12,6 +13,8 @@ import response.Division
 import response.DivisionsResponse
 import response.Sports
 import response.SportsResponse
+import response.Team
+import response.TeamsResponse
 
 class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -51,5 +54,14 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
         val responseBody = client(Request(Method.GET,"$apiHost/sports")).body.toString()
         val sportsAdapter = moshi.adapter<SportsResponse>(SportsResponse::class.java)
         return sportsAdapter.fromJson(responseBody)?.sports.orEmpty()
+    }
+
+    /**
+     * Endpoint `/teams`
+     */
+    override fun getTeams(): List<Team> {
+        val responseBody = client(Request(Method.GET,"$apiHost/teams")).body.toString()
+        val teamsAdapter = moshi.adapter<TeamsResponse>(TeamsResponse::class.java)
+        return teamsAdapter.fromJson(responseBody)?.teams.orEmpty()
     }
 }
