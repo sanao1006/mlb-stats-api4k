@@ -1,6 +1,6 @@
 import response.*
 import response.schedule.postseason.SchedulePostseasonResponse
-import response.shedule.postseason.series.SchedulePostseasonSeriesResponse
+import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 
 interface MlbStatsApi {
     fun getAwards(): List<Award>

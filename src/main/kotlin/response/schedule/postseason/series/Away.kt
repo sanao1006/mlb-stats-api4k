@@ -1,11 +1,11 @@
-package response.shedule.postseason.series
+package response.schedule.postseason.series
 
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Home(
+data class Away(
     @Json(name = "leagueRecord")
     val leagueRecord: LeagueRecord,
     @Json(name = "seriesNumber")

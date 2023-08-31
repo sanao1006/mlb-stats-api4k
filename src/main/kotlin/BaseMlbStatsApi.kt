@@ -15,7 +15,7 @@ import response.SportsResponse
 import response.Team
 import response.TeamsResponse
 import response.schedule.postseason.SchedulePostseasonResponse
-import response.shedule.postseason.series.SchedulePostseasonSeriesResponse
+import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()

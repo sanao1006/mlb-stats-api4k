@@ -1,4 +1,4 @@
-package response.shedule.postseason.series
+package response.schedule.postseason.series
 
 
 import com.squareup.moshi.Json
