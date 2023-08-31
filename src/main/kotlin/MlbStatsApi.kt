@@ -1,4 +1,5 @@
 import response.*
+import response.schedule.postseason.SchedulePostseasonResponse
 import response.shedule.postseason.series.SchedulePostseasonSeriesResponse
 
 interface MlbStatsApi {
@@ -7,6 +8,6 @@ interface MlbStatsApi {
     fun getDivisions(): List<Division>
     fun getSports(): List<Sports>
     fun getTeams(): List<Team>
-
     fun getSchedulePostseasonSeries(): SchedulePostseasonSeriesResponse
+    fun getSchedulePostseason(): SchedulePostseasonResponse
 }
