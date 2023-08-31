@@ -1,5 +1,4 @@
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.http4k.client.JavaHttpClient
 import org.http4k.core.HttpHandler
@@ -15,6 +14,7 @@ import response.Sports
 import response.SportsResponse
 import response.Team
 import response.TeamsResponse
+import response.shedule.postseason.series.SchedulePostseasonSeriesResponse
 
 class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -63,5 +63,14 @@ class MlbStatsApiImpl(val apiHost: String) : MlbStatsApi {
         val responseBody = client(Request(Method.GET,"$apiHost/teams")).body.toString()
         val teamsAdapter = moshi.adapter<TeamsResponse>(TeamsResponse::class.java)
         return teamsAdapter.fromJson(responseBody)?.teams.orEmpty()
+    }
+
+    /**
+     * Endpoint `/schedule/postseason/series`
+     */
+    override fun getSchedulePostseasonSeries(): SchedulePostseasonSeriesResponse {
+        val responseBody = client(Request(Method.GET, "$apiHost/schedule/postseason/series")).body.toString()
+        val schedulePostseasonSeriesAdapter = moshi.adapter<SchedulePostseasonSeriesResponse>(SchedulePostseasonSeriesResponse::class.java)
+        return schedulePostseasonSeriesAdapter.fromJson(responseBody)!!
     }
 }
