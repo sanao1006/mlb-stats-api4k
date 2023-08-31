@@ -13,5 +13,5 @@ data class Home(
     @Json(name = "splitSquad")
     val splitSquad: Boolean,
     @Json(name = "team")
-    val team: TeamX
+    val team: Team
 )
