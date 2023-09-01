@@ -9,6 +9,8 @@ import params.attendance.AttendanceRequiredQueryParams
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
+import params.game.GameFeedOptionalQueryParams
+import params.game.GameFeedRequiredQueryParams
 import params.jobs.datacasters.JobsDatacastersOptionalQueryParams
 import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
@@ -27,6 +29,7 @@ import response.SportsResponse
 import response.Team
 import response.TeamsResponse
 import response.attendance.AttendanceResponse
+import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
@@ -96,6 +99,17 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams): List<Division> {
         val endpoint = buildEndpointWithQueryParams("divisions", divisionsOptionalQueryParams.toMap())
         return fetchDataFromApi<DivisionsResponse>(endpoint).divisions
+    }
+
+    /**
+     * Endpoint `game/{gamePk}/feed/live`
+     */
+    override fun getGameFeed(
+        gameFeedRequiredQueryParams: GameFeedRequiredQueryParams,
+        gameFeedOptionalQueryParams: GameFeedOptionalQueryParams
+    ): GameResponse {
+        val endpoint = buildEndpointWithQueryParams("game/${gameFeedRequiredQueryParams.gamePk}/feed/live", gameFeedOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
