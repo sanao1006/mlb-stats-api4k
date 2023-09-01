@@ -9,6 +9,7 @@ import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.teams.TeamsOptionalQueryParams
 import response.Award
 import response.AwardsResponse
 import response.Conference
@@ -83,8 +84,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/teams`
      */
-    override fun getTeams(): List<Team> {
-        return fetchDataFromApi<TeamsResponse>("teams").teams
+    override fun getTeams(teamsOptionalQueryParams: TeamsOptionalQueryParams): List<Team> {
+        val endpoint = buildEndpointWithQueryParams("teams",teamsOptionalQueryParams.toMap())
+        return fetchDataFromApi<TeamsResponse>(endpoint).teams
     }
 
     /**
