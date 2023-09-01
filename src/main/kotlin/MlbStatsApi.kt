@@ -1,5 +1,6 @@
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
+import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import response.*
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
@@ -41,7 +42,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason`
      */
-    fun getSchedulePostseason(): SchedulePostseasonResponse
+    fun getSchedulePostseason(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams = SchedulePostseasonOptionalQueryParams()): SchedulePostseasonResponse
 
     /**
      * Endpoint `/jobs/umpires`

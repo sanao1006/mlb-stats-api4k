@@ -6,6 +6,7 @@ import org.http4k.core.Method
 import org.http4k.core.Request
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
+import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import response.Award
 import response.AwardsResponse
 import response.Conference
@@ -92,7 +93,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason`
      */
-    override fun getSchedulePostseason(): SchedulePostseasonResponse {
+    override fun getSchedulePostseason(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams): SchedulePostseasonResponse {
         return fetchDataFromApi("schedule/postseason")
     }
 
