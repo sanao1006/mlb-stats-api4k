@@ -1,3 +1,5 @@
+import params.attendance.AttendanceOptionalQueryParams
+import params.attendance.AttendanceRequiredQueryParams
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
@@ -9,6 +11,7 @@ import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryPa
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.*
+import response.attendance.AttendanceResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
@@ -16,6 +19,14 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 
 interface MlbStatsApi {
+    /**
+     * Endpoint `/attendance`
+     */
+    fun getAttendance(
+        attendanceRequiredQueryParams: AttendanceRequiredQueryParams,
+        attendanceOptionalQueryParams: AttendanceOptionalQueryParams = AttendanceOptionalQueryParams()
+    ): AttendanceResponse
+
     /**
      * Endpoint `/awards`
      */
