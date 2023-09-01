@@ -44,15 +44,18 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     private fun buildEndpointWithQueryParams(endpoint: String, queryParams: Map<String, String?>): String {
+        val ver = queryParams["ver"]
         val queryParamsStr = queryParams
+            .filterKeys { it != "ver" }
             .filterValues { it != null }
             .map { "${it.key}=${it.value}" }
             .joinToString("&")
+        val finalEndpoint = "$ver/$endpoint"
 
         return if (queryParamsStr.isNotEmpty()) {
-            "$endpoint?$queryParamsStr"
+            "$finalEndpoint?$queryParamsStr"
         } else {
-            endpoint
+            finalEndpoint
         }
     }
 
