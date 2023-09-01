@@ -2,6 +2,7 @@ import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
+import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.*
@@ -40,7 +41,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason/series`
      */
-    fun getSchedulePostseasonSeries(): SchedulePostseasonSeriesResponse
+    fun getSchedulePostseasonSeries(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
 
     /**
      * Endpoint `/schedule/postseason`

@@ -8,6 +8,7 @@ import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
+import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.Award
@@ -92,8 +93,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason/series`
      */
-    override fun getSchedulePostseasonSeries(): SchedulePostseasonSeriesResponse {
-        return fetchDataFromApi("schedule/postseason/series")
+    override fun getSchedulePostseasonSeries(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
+        val endpoint = buildEndpointWithQueryParams("schedule/postseason/series",schedulePostseasonSeriesOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
