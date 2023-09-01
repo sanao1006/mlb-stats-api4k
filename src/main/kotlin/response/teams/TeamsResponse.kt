@@ -1,4 +1,4 @@
-package response
+package response.teams
 
 
 import com.squareup.moshi.Json

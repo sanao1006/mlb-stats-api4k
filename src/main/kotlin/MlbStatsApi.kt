@@ -12,7 +12,6 @@ import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
-import response.*
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
@@ -23,8 +22,9 @@ import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
-import response.sports.Sports
 import response.sports.SportsResponse
+import response.teams.Team
+import response.teams.TeamsResponse
 
 interface MlbStatsApi {
     /**
@@ -66,7 +66,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/teams`
      */
-    fun getTeams(teamsOptionalQueryParams: TeamsOptionalQueryParams = TeamsOptionalQueryParams()): List<Team>
+    fun getTeams(teamsOptionalQueryParams: TeamsOptionalQueryParams = TeamsOptionalQueryParams()): TeamsResponse
 
     /**
      * Endpoint `/schedule/postseason/series`

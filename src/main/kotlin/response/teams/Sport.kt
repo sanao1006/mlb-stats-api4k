@@ -1,13 +1,15 @@
-package response
+package response.teams
 
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class League(
+data class Sport(
     @Json(name = "id")
-    val id: Int?,
+    val id: Int,
     @Json(name = "link")
-    val link: String
+    val link: String,
+    @Json(name = "name")
+    val name: String?
 )
