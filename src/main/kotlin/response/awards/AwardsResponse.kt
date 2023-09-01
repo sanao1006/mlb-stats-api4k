@@ -1,4 +1,4 @@
-package response
+package response.awards
 
 
 import com.squareup.moshi.Json

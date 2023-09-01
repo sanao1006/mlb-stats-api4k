@@ -14,6 +14,8 @@ import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.*
 import response.attendance.AttendanceResponse
+import response.awards.Award
+import response.awards.AwardsResponse
 import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
@@ -33,7 +35,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/awards`
      */
-    fun getAwards(awardsOptionalQueryParams: AwardsOptionalQueryParams = AwardsOptionalQueryParams()): List<Award>
+    fun getAwards(awardsOptionalQueryParams: AwardsOptionalQueryParams = AwardsOptionalQueryParams()): AwardsResponse
 
     /**
      * Endpoint `/conferences`
