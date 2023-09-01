@@ -7,6 +7,7 @@ import org.http4k.core.Request
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
+import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.sports.SportsOptionalQueryParams
@@ -109,8 +110,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/jobs/umpires`
      */
-    override fun getJobsUmpires(): JobsUmpiresResponse {
-        return fetchDataFromApi("jobs/umpires")
+    override fun getJobsUmpires(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams): JobsUmpiresResponse {
+        val endpoint = buildEndpointWithQueryParams("jobs/umpires", jobsUmpiresOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
