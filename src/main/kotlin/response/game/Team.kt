@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Team(
     @Json(name = "allStarStatus")
-    val allStarStatus: String, // N
+    val allStarStatus: String?, // N
     @Json(name = "id")
     val id: Int, // 559
     @Json(name = "link")

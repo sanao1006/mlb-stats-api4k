@@ -25,7 +25,7 @@ data class Details(
     @Json(name = "fromCatcher")
     val fromCatcher: Boolean?, // false
     @Json(name = "hasReview")
-    val hasReview: Boolean, // false
+    val hasReview: Boolean?, // false
     @Json(name = "homeScore")
     val homeScore: Int?, // 0
     @Json(name = "isBall")
@@ -33,7 +33,7 @@ data class Details(
     @Json(name = "isInPlay")
     val isInPlay: Boolean?, // false
     @Json(name = "isOut")
-    val isOut: Boolean, // false
+    val isOut: Boolean?, // false
     @Json(name = "isScoringPlay")
     val isScoringPlay: Boolean?, // false
     @Json(name = "isStrike")

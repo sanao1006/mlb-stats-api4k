@@ -21,7 +21,7 @@ data class GameData(
     @Json(name = "officialVenue")
     val officialVenue: OfficialVenue,
     @Json(name = "players")
-    val players: List<String>,
+    val players: Any,
     @Json(name = "primaryDatacaster")
     val primaryDatacaster: PrimaryDatacaster,
     @Json(name = "probablePitchers")

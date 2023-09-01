@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Official(
     @Json(name = "official")
-    val official: Official,
+    val official: Official?,
     @Json(name = "officialType")
-    val officialType: String // Home Plate
+    val officialType: String? // Home Plate
 )
