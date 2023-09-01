@@ -94,7 +94,8 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * Endpoint `/schedule/postseason`
      */
     override fun getSchedulePostseason(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams): SchedulePostseasonResponse {
-        return fetchDataFromApi("schedule/postseason")
+        val endpoint = buildEndpointWithQueryParams("schedule/postseason", schedulePostseasonOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
