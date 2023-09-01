@@ -22,7 +22,6 @@ import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
 import response.divisions.DivisionsResponse
 import response.sports.SportsResponse
-import response.teams.Team
 import response.teams.TeamsResponse
 import response.attendance.AttendanceResponse
 import response.game.GameResponse

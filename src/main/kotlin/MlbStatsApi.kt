@@ -23,7 +23,6 @@ import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.sports.SportsResponse
-import response.teams.Team
 import response.teams.TeamsResponse
 
 interface MlbStatsApi {
