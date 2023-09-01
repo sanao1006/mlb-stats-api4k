@@ -2,6 +2,7 @@ import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
 import params.jobs.datacasters.JobsDatacastersOptionalQueryParams
+import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
@@ -63,5 +64,5 @@ interface MlbStatsApi {
     /**
      * Endpoint `/jobs/officialScorers`
      */
-    fun getJobsOfficialScorers(): JobsOfficialScorersResponse
+    fun getJobsOfficialScorers(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams = JobsOfficialScorersOptionalQueryParams()): JobsOfficialScorersResponse
 }
