@@ -6,6 +6,7 @@ import org.http4k.core.Method
 import org.http4k.core.Request
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
+import params.divisions.DivisionsOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import response.Award
 import response.AwardsResponse
@@ -65,8 +66,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/divisions`
      */
-    override fun getDivisions(): List<Division> {
-        return fetchDataFromApi<DivisionsResponse>("divisions").divisions
+    override fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams): List<Division> {
+        val endpoint = buildEndpointWithQueryParams("divisions", divisionsOptionalQueryParams.toMap())
+        return fetchDataFromApi<DivisionsResponse>(endpoint).divisions
     }
 
     /**

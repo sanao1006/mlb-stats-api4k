@@ -1,5 +1,6 @@
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
+import params.divisions.DivisionsOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import response.*
 import response.jobs.datacasters.JobsDatacastersResponse
@@ -22,7 +23,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/divisions`
      */
-    fun getDivisions(): List<Division>
+    fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams = DivisionsOptionalQueryParams()): List<Division>
 
     /**
      * Endpoint `/sports`
