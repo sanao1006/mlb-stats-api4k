@@ -64,7 +64,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/attendance`
      */
-    override fun getAttendance(
+    override fun getAttendanceResponse(
         attendanceRequiredQueryParams: AttendanceRequiredQueryParams,
         attendanceOptionalQueryParams: AttendanceOptionalQueryParams
     ): AttendanceResponse {
@@ -75,7 +75,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/awards`
      */
-    override fun getAwards(awardsOptionalQueryParams: AwardsOptionalQueryParams): AwardsResponse {
+    override fun getAwardsResponse(awardsOptionalQueryParams: AwardsOptionalQueryParams): AwardsResponse {
         val endpoint = buildEndpointWithQueryParams("awards", awardsOptionalQueryParams.toMap())
         return fetchDataFromApi<AwardsResponse>(endpoint)
     }
@@ -83,7 +83,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/conferences`
      */
-    override fun getConferences(conferencesOptionalQueryParams: ConferencesOptionalQueryParams): ConferencesResponse {
+    override fun getConferencesResponse(conferencesOptionalQueryParams: ConferencesOptionalQueryParams): ConferencesResponse {
         val endpoint = buildEndpointWithQueryParams("conferences", conferencesOptionalQueryParams.toMap())
         return fetchDataFromApi<ConferencesResponse>(endpoint)
     }
@@ -91,7 +91,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/divisions`
      */
-    override fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams): DivisionsResponse {
+    override fun getDivisionsResponse(divisionsOptionalQueryParams: DivisionsOptionalQueryParams): DivisionsResponse {
         val endpoint = buildEndpointWithQueryParams("divisions", divisionsOptionalQueryParams.toMap())
         return fetchDataFromApi<DivisionsResponse>(endpoint)
     }
@@ -99,7 +99,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `game/{gamePk}/feed/live`
      */
-    override fun getGameFeed(
+    override fun getGameFeedResponse(
         gameFeedRequiredQueryParams: GameFeedRequiredQueryParams,
         gameFeedOptionalQueryParams: GameFeedOptionalQueryParams
     ): GameResponse {
@@ -110,7 +110,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/sports`
      */
-    override fun getSports(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
+    override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
         val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
         return fetchDataFromApi<SportsResponse>(endpoint)
     }
@@ -118,7 +118,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/teams`
      */
-    override fun getTeams(teamsOptionalQueryParams: TeamsOptionalQueryParams): TeamsResponse {
+    override fun getTeamsResponse(teamsOptionalQueryParams: TeamsOptionalQueryParams): TeamsResponse {
         val endpoint = buildEndpointWithQueryParams("teams",teamsOptionalQueryParams.toMap())
         return fetchDataFromApi<TeamsResponse>(endpoint)
     }
@@ -126,7 +126,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason/series`
      */
-    override fun getSchedulePostseasonSeries(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
+    override fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
         val endpoint = buildEndpointWithQueryParams("schedule/postseason/series",schedulePostseasonSeriesOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
@@ -134,7 +134,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/schedule/postseason`
      */
-    override fun getSchedulePostseason(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams): SchedulePostseasonResponse {
+    override fun getSchedulePostseasonResponse(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams): SchedulePostseasonResponse {
         val endpoint = buildEndpointWithQueryParams("schedule/postseason", schedulePostseasonOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
@@ -142,7 +142,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/jobs/umpires`
      */
-    override fun getJobsUmpires(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams): JobsUmpiresResponse {
+    override fun getJobsUmpiresResponse(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams): JobsUmpiresResponse {
         val endpoint = buildEndpointWithQueryParams("jobs/umpires", jobsUmpiresOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
@@ -150,7 +150,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/jobs/datacasters`
      */
-    override fun getJobsDatacasters(jobsDatacastersOptionalQueryParams: JobsDatacastersOptionalQueryParams): JobsDatacastersResponse {
+    override fun getJobsDatacastersResponse(jobsDatacastersOptionalQueryParams: JobsDatacastersOptionalQueryParams): JobsDatacastersResponse {
         val endpoint = buildEndpointWithQueryParams("jobs/datacasters", jobsDatacastersOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
@@ -158,7 +158,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/jobs/officialScorers`
      */
-    override fun getJobsOfficialScorers(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
+    override fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
         val endpoint = buildEndpointWithQueryParams("jobs/officialScorers", jobsOfficialScorersOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
