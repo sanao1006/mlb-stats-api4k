@@ -4,6 +4,8 @@ import org.http4k.client.JavaHttpClient
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method
 import org.http4k.core.Request
+import params.attendance.AttendanceOptionalQueryParams
+import params.attendance.AttendanceRequiredQueryParams
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
@@ -24,6 +26,7 @@ import response.Sports
 import response.SportsResponse
 import response.Team
 import response.TeamsResponse
+import response.attendance.AttendanceResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
@@ -51,6 +54,17 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         } else {
             endpoint
         }
+    }
+
+    /**
+     * Endpoint `/attendance`
+     */
+    override fun getAttendance(
+        attendanceRequiredQueryParams: AttendanceRequiredQueryParams,
+        attendanceOptionalQueryParams: AttendanceOptionalQueryParams
+    ): AttendanceResponse {
+        val endpoint = buildEndpointWithQueryParams("attendance", attendanceRequiredQueryParams.plus(attendanceOptionalQueryParams))
+        return fetchDataFromApi(endpoint)
     }
 
     /**
