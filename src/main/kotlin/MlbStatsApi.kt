@@ -3,6 +3,8 @@ import params.attendance.AttendanceRequiredQueryParams
 import params.awards.AwardsOptionalQueryParams
 import params.conferences.ConferencesOptionalQueryParams
 import params.divisions.DivisionsOptionalQueryParams
+import params.game.GameFeedOptionalQueryParams
+import params.game.GameFeedRequiredQueryParams
 import params.jobs.datacasters.JobsDatacastersOptionalQueryParams
 import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
@@ -12,6 +14,7 @@ import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.*
 import response.attendance.AttendanceResponse
+import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
@@ -41,6 +44,14 @@ interface MlbStatsApi {
      * Endpoint `/divisions`
      */
     fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams = DivisionsOptionalQueryParams()): List<Division>
+
+    /**
+     * Endpoint `game/{gamePk}/feed/live`
+     */
+    fun getGameFeed(
+        gameFeedRequiredQueryParams: GameFeedRequiredQueryParams,
+        gameFeedOptionalQueryParams: GameFeedOptionalQueryParams = GameFeedOptionalQueryParams()
+    ): GameResponse
 
     /**
      * Endpoint `/sports`
