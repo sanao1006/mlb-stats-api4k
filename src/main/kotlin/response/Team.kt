@@ -3,6 +3,7 @@ package response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import response.divisions.Division
 
 @JsonClass(generateAdapter = true)
 data class Team(

@@ -15,8 +15,9 @@ import params.teams.TeamsOptionalQueryParams
 import response.*
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
-import response.conferences.Conference
 import response.conferences.ConferencesResponse
+import response.divisions.Division
+import response.divisions.DivisionsResponse
 import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
@@ -46,7 +47,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/divisions`
      */
-    fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams = DivisionsOptionalQueryParams()): List<Division>
+    fun getDivisions(divisionsOptionalQueryParams: DivisionsOptionalQueryParams = DivisionsOptionalQueryParams()): DivisionsResponse
 
     /**
      * Endpoint `game/{gamePk}/feed/live`

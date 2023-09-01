@@ -1,4 +1,4 @@
-package response
+package response.divisions
 
 
 import com.squareup.moshi.Json
