@@ -1,4 +1,4 @@
-package response
+package response.conferences
 
 
 import com.squareup.moshi.Json
