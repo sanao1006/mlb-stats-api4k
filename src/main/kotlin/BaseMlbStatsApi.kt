@@ -43,6 +43,10 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         return adapter.fromJson(responseBody) ?: throw IllegalStateException("Failed to parse response")
     }
 
+    /**
+     * This is a function that creates a path after `api/` (`/v1/draft?year=2009`) for an endpoint such as "https://statsapi.mlb.com/api/v1/draft?year=2009" for example.
+     * `v1/` is always at the beginning.
+     */
     private fun buildEndpointWithQueryParams(endpoint: String, queryParams: Map<String, String?>): String {
         val ver = queryParams["ver"]
         val queryParamsStr = queryParams
