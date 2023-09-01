@@ -1,7 +1,7 @@
 package params.teams
 
 data class TeamsOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val season: String? = null,
     val activeStatus: String? = null,
     val leagueIds: String? = null,

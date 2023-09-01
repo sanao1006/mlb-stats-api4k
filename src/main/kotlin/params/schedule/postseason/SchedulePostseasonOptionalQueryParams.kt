@@ -1,7 +1,7 @@
 package params.schedule.postseason
 
 data class SchedulePostseasonOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val gameTypes: String? = null,
     val seriesNumber: String? = null,
     val teamId: String? = null,

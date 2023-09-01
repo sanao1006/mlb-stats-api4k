@@ -1,7 +1,7 @@
 package params.conferences
 
 data class ConferencesOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val conferenceId: String? = null,
     val season: String? = null,
     val fields: String? = null

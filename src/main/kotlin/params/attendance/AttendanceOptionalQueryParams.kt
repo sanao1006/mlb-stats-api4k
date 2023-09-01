@@ -1,7 +1,7 @@
 package params.attendance
 
 data class AttendanceOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val teamId: String? = null,
     val leagueId: String? = null,
     val season: String? = null,

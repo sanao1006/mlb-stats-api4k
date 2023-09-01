@@ -1,7 +1,7 @@
 package params.jobs.officialScorers
 
 data class JobsOfficialScorersOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val timecode: String? = null,
     val fields: String? = null,
 ) {

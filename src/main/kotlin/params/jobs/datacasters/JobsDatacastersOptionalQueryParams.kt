@@ -1,7 +1,7 @@
 package params.jobs.datacasters
 
 data class JobsDatacastersOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val sportId: String? = null,
     val date: String? = null,
     val fields: String? = null,

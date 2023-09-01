@@ -1,7 +1,7 @@
 package params.awards
 
 data class AwardsOptionalQueryParams(
-    val ver: String? = null,
+    val ver: String? = "v1",
     val awardId: String? = null,
     val recipients: Boolean? = null,
     val sportId: String? = null,
