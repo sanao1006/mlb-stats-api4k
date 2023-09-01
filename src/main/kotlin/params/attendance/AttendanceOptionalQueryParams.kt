@@ -13,11 +13,8 @@ data class AttendanceOptionalQueryParams(
     fun toMap(): Map<String, String?> {
         return mapOf(
             "ver" to ver,
-            "teamId" to teamId,
-            "leagueId" to leagueId,
             "season" to season,
             "date" to date,
-            "leagueListId" to leagueListId,
             "gameType" to gameType,
             "fields" to fields
         )
