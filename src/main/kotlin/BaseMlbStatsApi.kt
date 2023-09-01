@@ -4,6 +4,7 @@ import org.http4k.client.JavaHttpClient
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method
 import org.http4k.core.Request
+import params.awards.AwardsOptionalQueryParams
 import response.Award
 import response.AwardsResponse
 import response.Conference
@@ -30,11 +31,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         return adapter.fromJson(responseBody) ?: throw IllegalStateException("Failed to parse response")
     }
 
+    private fun buildEndpointWithQueryParams(endpoint: String, queryParams: Map<String, String?>): String {
+        val queryParamsStr = queryParams
+            .filterValues { it != null }
+            .map { "${it.key}=${it.value}" }
+            .joinToString("&")
+
+        return if (queryParamsStr.isNotEmpty()) {
+            "$endpoint?$queryParamsStr"
+        } else {
+            endpoint
+        }
+    }
+
     /**
      * Endpoint `/awards`
      */
-    override fun getAwards(): List<Award> {
-        return fetchDataFromApi<AwardsResponse>("awards").awards
+    override fun getAwards(awardsOptionalQueryParams: AwardsOptionalQueryParams): List<Award> {
+        val endpoint = buildEndpointWithQueryParams("awards", awardsOptionalQueryParams.toMap())
+        return fetchDataFromApi<AwardsResponse>(endpoint).awards
     }
 
     /**
