@@ -16,7 +16,6 @@ import response.*
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
-import response.divisions.Division
 import response.divisions.DivisionsResponse
 import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
@@ -24,6 +23,8 @@ import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
+import response.sports.Sports
+import response.sports.SportsResponse
 
 interface MlbStatsApi {
     /**
@@ -60,7 +61,7 @@ interface MlbStatsApi {
     /**
      * Endpoint `/sports`
      */
-    fun getSports(sportsOptionalQueryParams: SportsOptionalQueryParams = SportsOptionalQueryParams()): List<Sports>
+    fun getSports(sportsOptionalQueryParams: SportsOptionalQueryParams = SportsOptionalQueryParams()): SportsResponse
 
     /**
      * Endpoint `/teams`

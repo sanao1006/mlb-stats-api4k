@@ -20,10 +20,9 @@ import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
-import response.divisions.Division
 import response.divisions.DivisionsResponse
-import response.Sports
-import response.SportsResponse
+import response.sports.Sports
+import response.sports.SportsResponse
 import response.Team
 import response.TeamsResponse
 import response.attendance.AttendanceResponse
@@ -113,9 +112,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Endpoint `/sports`
      */
-    override fun getSports(sportsOptionalQueryParams: SportsOptionalQueryParams): List<Sports> {
+    override fun getSports(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
         val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
-        return fetchDataFromApi<SportsResponse>(endpoint).sports
+        return fetchDataFromApi<SportsResponse>(endpoint)
     }
 
     /**

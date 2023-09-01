@@ -1,4 +1,4 @@
-package response
+package response.sports
 
 
 import com.squareup.moshi.Json
