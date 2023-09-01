@@ -10,6 +10,8 @@ import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
+import params.schedule.tied.ScheduleTiedOptionalQueryParams
+import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.attendance.AttendanceResponse
@@ -22,6 +24,7 @@ import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
+import response.schedule.tied.ScheduleTiedResponse
 import response.sports.SportsResponse
 import response.teams.TeamsResponse
 
@@ -71,6 +74,14 @@ interface MlbStatsApi {
      * Endpoint `/schedule/postseason/series`
      */
     fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
+
+    /**
+     * Endpoint "/schedule/games/tied"
+     */
+    fun getScheduleTiedResponse(
+        scheduleTiedRequiredQueryParams: ScheduleTiedRequiredQueryParams,
+        scheduleTiedOptionalQueryParams: ScheduleTiedOptionalQueryParams = ScheduleTiedOptionalQueryParams()
+    ): ScheduleTiedResponse
 
     /**
      * Endpoint `/schedule/postseason`
