@@ -22,6 +22,7 @@ import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
+import params.teams.history.TeamsHistoryRequiredQueryParams
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
 import response.divisions.DivisionsResponse
@@ -36,6 +37,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.teams.history.TeamsHistoryResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -226,7 +228,8 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         seasonRequiredQueryParams: SeasonRequiredQueryParams,
         seasonOptionalQueryParams: SeasonOptionalQueryParams
     ): SeasonResponse {
-        val endpoint = buildEndpointWithQueryParams("seasons", seasonRequiredQueryParams.plus(seasonOptionalQueryParams))
+        val endpoint =
+            buildEndpointWithQueryParams("seasons", seasonRequiredQueryParams.plus(seasonOptionalQueryParams))
         println(endpoint)
         return fetchDataFromApi(endpoint)
     }
@@ -259,6 +262,23 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
         val endpoint =
             buildEndpointWithQueryParams("jobs/officialScorers", jobsOfficialScorersOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve team history data from the API using endpoint "/teams/history".
+     * @param teamsHistoryRequiredQueryParams Required query parameters for the request.
+     * @param teamsOptionalQueryParams Optional query parameters for the request.
+     * @return Team history data response.
+     */
+    override fun getTeamsHistoryResponse(
+        teamsHistoryRequiredQueryParams: TeamsHistoryRequiredQueryParams,
+        teamsOptionalQueryParams: TeamsOptionalQueryParams
+    ): TeamsHistoryResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/history",
+            teamsHistoryRequiredQueryParams.plus(teamsOptionalQueryParams)
+        )
         return fetchDataFromApi(endpoint)
     }
 }
