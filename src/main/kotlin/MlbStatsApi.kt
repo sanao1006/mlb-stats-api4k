@@ -71,17 +71,17 @@ interface MlbStatsApi {
     fun getTeamsResponse(teamsOptionalQueryParams: TeamsOptionalQueryParams = TeamsOptionalQueryParams()): TeamsResponse
 
     /**
-     * Endpoint `/schedule/postseason/series`
-     */
-    fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
-
-    /**
      * Endpoint "/schedule/games/tied"
      */
     fun getScheduleTiedResponse(
         scheduleTiedRequiredQueryParams: ScheduleTiedRequiredQueryParams,
         scheduleTiedOptionalQueryParams: ScheduleTiedOptionalQueryParams = ScheduleTiedOptionalQueryParams()
     ): ScheduleTiedResponse
+
+    /**
+     * Endpoint `/schedule/postseason/series`
+     */
+    fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
 
     /**
      * Endpoint `/schedule/postseason`

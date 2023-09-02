@@ -170,19 +170,6 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve postseason series schedule data from the API using endpoint "/schedule/postseason/series".
-     * @param schedulePostseasonSeriesOptionalQueryParams Optional query parameters for the request.
-     * @return Schedule postseason series response data.
-     */
-    override fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
-        val endpoint = buildEndpointWithQueryParams(
-            "schedule/postseason/series",
-            schedulePostseasonSeriesOptionalQueryParams.toMap()
-        )
-        return fetchDataFromApi(endpoint)
-    }
-
-    /**
      * Retrieve tied game schedule data from the API for a specific season using endpoint "/schedule/games/tied".
      * @param scheduleTiedRequiredQueryParams Required query parameters for the request.
      * @param scheduleTiedOptionalQueryParams Optional query parameters for the request.
@@ -207,6 +194,19 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getSchedulePostseasonResponse(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams): SchedulePostseasonResponse {
         val endpoint =
             buildEndpointWithQueryParams("schedule/postseason", schedulePostseasonOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve postseason series schedule data from the API using endpoint "/schedule/postseason/series".
+     * @param schedulePostseasonSeriesOptionalQueryParams Optional query parameters for the request.
+     * @return Schedule postseason series response data.
+     */
+    override fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "schedule/postseason/series",
+            schedulePostseasonSeriesOptionalQueryParams.toMap()
+        )
         return fetchDataFromApi(endpoint)
     }
 
