@@ -18,6 +18,8 @@ import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.schedule.tied.ScheduleTiedOptionalQueryParams
 import params.schedule.tied.ScheduleTiedRequiredQueryParams
+import params.season.SeasonOptionalQueryParams
+import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.awards.AwardsResponse
@@ -33,6 +35,7 @@ import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
+import response.season.SeasonResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -207,6 +210,24 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
             "schedule/postseason/series",
             schedulePostseasonSeriesOptionalQueryParams.toMap()
         )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve season data from the API using endpoint "/seasons/seasonId".
+     *
+     * This function retrieves information about seasons from the API based on the specified
+     * required and optional query parameters.
+     * @param seasonRequiredQueryParams Required query parameters for the request.
+     * @param seasonOptionalQueryParams Optional query parameters for the request.
+     * @return Season data response.
+     */
+    override fun getSeasonResponse(
+        seasonRequiredQueryParams: SeasonRequiredQueryParams,
+        seasonOptionalQueryParams: SeasonOptionalQueryParams
+    ): SeasonResponse {
+        val endpoint = buildEndpointWithQueryParams("seasons", seasonRequiredQueryParams.plus(seasonOptionalQueryParams))
+        println(endpoint)
         return fetchDataFromApi(endpoint)
     }
 
