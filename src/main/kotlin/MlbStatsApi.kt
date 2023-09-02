@@ -79,14 +79,14 @@ interface MlbStatsApi {
     ): ScheduleTiedResponse
 
     /**
-     * Endpoint `/schedule/postseason/series`
-     */
-    fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
-
-    /**
      * Endpoint `/schedule/postseason`
      */
     fun getSchedulePostseasonResponse(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams = SchedulePostseasonOptionalQueryParams()): SchedulePostseasonResponse
+
+    /**
+     * Endpoint `/schedule/postseason/series`
+     */
+    fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
 
     /**
      * Endpoint `/jobs/umpires`
