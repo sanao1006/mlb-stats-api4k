@@ -22,6 +22,8 @@ import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
+import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
+import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
 import params.teams.history.TeamsHistoryRequiredQueryParams
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
@@ -37,6 +39,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
@@ -278,6 +281,23 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "teams/history",
             teamsHistoryRequiredQueryParams.plus(teamsOptionalQueryParams)
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve team affiliates data from the API using endpoint "/teams/affiliates".
+     * @param teamsAffiliatesRequiredQueryParams Required query parameters for the request.
+     * @param teamsAffiliatesOptionalQueryParams Optional query parameters for the request.
+     * @return Team affiliates data response.
+     */
+    override fun getTeamsAffiliatesResponse(
+        teamsAffiliatesRequiredQueryParams: TeamsAffiliatesRequiredQueryParams,
+        teamsAffiliatesOptionalQueryParams: TeamsAffiliatesOptionalQueryParams
+    ): TeamsAffiliatesResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/affiliates",
+            teamsAffiliatesRequiredQueryParams.plus(teamsAffiliatesOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
