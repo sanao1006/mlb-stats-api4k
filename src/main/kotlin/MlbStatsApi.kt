@@ -16,6 +16,7 @@ import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
+import params.teams.history.TeamsHistoryRequiredQueryParams
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
@@ -30,6 +31,7 @@ import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
 import response.sports.SportsResponse
 import response.teams.TeamsResponse
+import response.teams.history.TeamsHistoryResponse
 
 interface MlbStatsApi {
     /**
@@ -113,4 +115,12 @@ interface MlbStatsApi {
      * Endpoint `/jobs/officialScorers`
      */
     fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams = JobsOfficialScorersOptionalQueryParams()): JobsOfficialScorersResponse
+
+    /**
+     * Endpoint "/teams/history"
+     */
+    fun getTeamsHistoryResponse(
+        teamsHistoryRequiredQueryParams: TeamsHistoryRequiredQueryParams,
+        teamsOptionalQueryParams: TeamsOptionalQueryParams = TeamsOptionalQueryParams(),
+    ): TeamsHistoryResponse
 }
