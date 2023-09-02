@@ -16,6 +16,8 @@ import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
+import params.schedule.tied.ScheduleTiedOptionalQueryParams
+import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.teams.TeamsOptionalQueryParams
 import response.awards.AwardsResponse
@@ -30,6 +32,7 @@ import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
+import response.schedule.tied.ScheduleTiedResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -175,6 +178,23 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "schedule/postseason/series",
             schedulePostseasonSeriesOptionalQueryParams.toMap()
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve tied game schedule data from the API for a specific season using endpoint "/schedule/games/tied".
+     * @param scheduleTiedRequiredQueryParams Required query parameters for the request.
+     * @param scheduleTiedOptionalQueryParams Optional query parameters for the request.
+     * @return Tied game schedule response data.
+     */
+    override fun getScheduleTiedResponse(
+        scheduleTiedRequiredQueryParams: ScheduleTiedRequiredQueryParams,
+        scheduleTiedOptionalQueryParams: ScheduleTiedOptionalQueryParams
+    ): ScheduleTiedResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "schedule/games/tied?season=${scheduleTiedRequiredQueryParams.season}",
+            scheduleTiedOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
