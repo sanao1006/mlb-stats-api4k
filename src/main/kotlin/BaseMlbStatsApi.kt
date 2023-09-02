@@ -72,7 +72,11 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val finalEndpoint = "$ver/$endpoint"
 
         return if (queryParamsStr.isNotEmpty()) {
-            "$finalEndpoint?$queryParamsStr"
+            if (finalEndpoint.contains("?")) {
+                "$finalEndpoint&$queryParamsStr"
+            } else {
+                "$finalEndpoint?$queryParamsStr"
+            }
         } else {
             finalEndpoint
         }
