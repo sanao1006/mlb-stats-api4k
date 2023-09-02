@@ -193,8 +193,8 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         scheduleTiedOptionalQueryParams: ScheduleTiedOptionalQueryParams
     ): ScheduleTiedResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "schedule/games/tied?season=${scheduleTiedRequiredQueryParams.season}",
-            scheduleTiedOptionalQueryParams.toMap()
+            "schedule/games/tied",
+            scheduleTiedRequiredQueryParams.plus(scheduleTiedOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
