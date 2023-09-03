@@ -21,6 +21,8 @@ import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.team.TeamOptionalQueryParams
+import params.team.TeamRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
@@ -39,6 +41,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.team.TeamResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
@@ -75,11 +78,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      */
     private fun buildEndpointWithQueryParams(endpoint: String, queryParams: Map<String, String?>): String {
         val ver = queryParams["ver"]
-        val queryParamsStr = queryParams
-            .filterKeys { it != "ver" }
-            .filterValues { it != null }
-            .map { "${it.key}=${it.value}" }
-            .joinToString("&")
+        val queryParamsStr =
+            queryParams.filterKeys { it != "ver" }.filterValues { it != null }.map { "${it.key}=${it.value}" }
+                .joinToString("&")
         val finalEndpoint = "$ver/$endpoint"
 
         return if (queryParamsStr.isNotEmpty()) {
@@ -104,8 +105,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         attendanceOptionalQueryParams: AttendanceOptionalQueryParams
     ): AttendanceResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "attendance",
-            attendanceRequiredQueryParams.plus(attendanceOptionalQueryParams)
+            "attendance", attendanceRequiredQueryParams.plus(attendanceOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
@@ -151,8 +151,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         gameFeedOptionalQueryParams: GameFeedOptionalQueryParams
     ): GameResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "game/${gameFeedRequiredQueryParams.gamePk}/feed/live",
-            gameFeedOptionalQueryParams.toMap()
+            "game/${gameFeedRequiredQueryParams.gamePk}/feed/live", gameFeedOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
@@ -188,8 +187,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         scheduleTiedOptionalQueryParams: ScheduleTiedOptionalQueryParams
     ): ScheduleTiedResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "schedule/games/tied",
-            scheduleTiedRequiredQueryParams.plus(scheduleTiedOptionalQueryParams)
+            "schedule/games/tied", scheduleTiedRequiredQueryParams.plus(scheduleTiedOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
@@ -212,8 +210,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      */
     override fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams): SchedulePostseasonSeriesResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "schedule/postseason/series",
-            schedulePostseasonSeriesOptionalQueryParams.toMap()
+            "schedule/postseason/series", schedulePostseasonSeriesOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
@@ -228,8 +225,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @return Season data response.
      */
     override fun getSeasonResponse(
-        seasonRequiredQueryParams: SeasonRequiredQueryParams,
-        seasonOptionalQueryParams: SeasonOptionalQueryParams
+        seasonRequiredQueryParams: SeasonRequiredQueryParams, seasonOptionalQueryParams: SeasonOptionalQueryParams
     ): SeasonResponse {
         val endpoint =
             buildEndpointWithQueryParams("seasons", seasonRequiredQueryParams.plus(seasonOptionalQueryParams))
@@ -279,8 +275,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         teamsOptionalQueryParams: TeamsOptionalQueryParams
     ): TeamsHistoryResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "teams/history",
-            teamsHistoryRequiredQueryParams.plus(teamsOptionalQueryParams)
+            "teams/history", teamsHistoryRequiredQueryParams.plus(teamsOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
@@ -296,9 +291,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         teamsAffiliatesOptionalQueryParams: TeamsAffiliatesOptionalQueryParams
     ): TeamsAffiliatesResponse {
         val endpoint = buildEndpointWithQueryParams(
-            "teams/affiliates",
-            teamsAffiliatesRequiredQueryParams.plus(teamsAffiliatesOptionalQueryParams)
+            "teams/affiliates", teamsAffiliatesRequiredQueryParams.plus(teamsAffiliatesOptionalQueryParams)
         )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve team data from the API using endpoint "team".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}"
+     * @param teamRequiredQueryParams Required query parameters for the request.
+     * @param teamOptionalQueryParams Optional query parameters for the request.
+     * @return Team data response.
+     */
+    override fun getTeamResponse(
+        teamRequiredQueryParams: TeamRequiredQueryParams,
+        teamOptionalQueryParams: TeamOptionalQueryParams
+    ): TeamResponse {
+        val endpoint =
+            buildEndpointWithQueryParams("teams/${teamRequiredQueryParams.teamId}", teamOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
 }
