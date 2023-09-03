@@ -95,7 +95,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve attendance data from the API using endpoint "/attendance".
+     * Retrieve attendance data from the API using endpoint "attendance".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/attendance"
      * @param attendanceRequiredQueryParams Required query parameters for the request.
      * @param attendanceOptionalQueryParams Optional query parameters for the request.
      * @return Attendance response data.
@@ -111,7 +113,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve attendance data from the API using endpoint "/awards".
+     * Retrieve attendance data from the API using endpoint "awards".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/awards{awardId}{recipients}"
      * @param awardsOptionalQueryParams Optional query parameters for the request.
      * @return Awards response data.
      */
@@ -121,7 +125,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve attendance data from the API using endpoint "/conferences".
+     * Retrieve attendance data from the API using endpoint "conferences".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/conferences"
      * @param conferencesOptionalQueryParams Optional query parameters for the request.
      * @return Conferences response data.
      */
@@ -131,7 +137,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve divisions data from the API using endpoint "/divisions"
+     * Retrieve divisions data from the API using endpoint "divisions"
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/divisions"
      * @param divisionsOptionalQueryParams Optional query parameters for the request.
      * @return Divisions response data.
      */
@@ -141,7 +149,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve live game feed data from the API for a specific game using endpoint "game/{gamePk}/feed/live"
+     * Retrieve live game feed data from the API for a specific game using endpoint "game"
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/game/{gamePk}/feed/live"
      * @param gameFeedRequiredQueryParams Required query parameters for the request.
      * @param gameFeedOptionalQueryParams Optional query parameters for the request.
      * @return Game feed response data.
@@ -157,27 +167,46 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve sports data from the API using endpoint "/sports"
-     * @param sportsOptionalQueryParams Optional query parameters for the request.
-     * @return Sports response data.
+     * Retrieve umpires job data from the API using endpoint "jobs_umpires".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/jobs/umpires"
+     * @param jobsUmpiresOptionalQueryParams Optional query parameters for the request.
+     * @return Umpires job response data.
      */
-    override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
-        val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
-        return fetchDataFromApi<SportsResponse>(endpoint)
+    override fun getJobsUmpiresResponse(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams): JobsUmpiresResponse {
+        val endpoint = buildEndpointWithQueryParams("jobs/umpires", jobsUmpiresOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
-     * Retrieve teams data from the API using endpoint "/teams".
-     * @param teamsOptionalQueryParams Optional query parameters for the request.
-     * @return Teams response data.
+     * Retrieve datacasters job data from the API using endpoint "jobs_datacasters".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/jobs/datacasters"
+     * @param jobsDatacastersOptionalQueryParams Optional query parameters for the request.
+     * @return Datacasters job response data.
      */
-    override fun getTeamsResponse(teamsOptionalQueryParams: TeamsOptionalQueryParams): TeamsResponse {
-        val endpoint = buildEndpointWithQueryParams("teams", teamsOptionalQueryParams.toMap())
-        return fetchDataFromApi<TeamsResponse>(endpoint)
+    override fun getJobsDatacastersResponse(jobsDatacastersOptionalQueryParams: JobsDatacastersOptionalQueryParams): JobsDatacastersResponse {
+        val endpoint = buildEndpointWithQueryParams("jobs/datacasters", jobsDatacastersOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
     }
 
     /**
-     * Retrieve tied game schedule data from the API for a specific season using endpoint "/schedule/games/tied".
+     * Retrieve official scorers job data from the API using endpoint "jobs_officialScorers".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/jobs/officialScorers"
+     * @param jobsOfficialScorersOptionalQueryParams Optional query parameters for the request.
+     * @return Official scorers job response data.
+     */
+    override fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
+        val endpoint =
+            buildEndpointWithQueryParams("jobs/officialScorers", jobsOfficialScorersOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve tied game schedule data from the API for a specific season using endpoint "schedule_tied".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/schedule/games/tied"
      * @param scheduleTiedRequiredQueryParams Required query parameters for the request.
      * @param scheduleTiedOptionalQueryParams Optional query parameters for the request.
      * @return Tied game schedule response data.
@@ -193,7 +222,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve postseason schedule data from the API using endpoint "/schedule/postseason".
+     * Retrieve postseason schedule data from the API using endpoint "schedule_postseason".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/schedule/postseason"
      * @param schedulePostseasonOptionalQueryParams Optional query parameters for the request.
      * @return Schedule postseason response data.
      */
@@ -204,7 +235,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve postseason series schedule data from the API using endpoint "/schedule/postseason/series".
+     * Retrieve postseason series schedule data from the API using endpoint "schedule_postseason_series".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/schedule/postseason/series"
      * @param schedulePostseasonSeriesOptionalQueryParams Optional query parameters for the request.
      * @return Schedule postseason series response data.
      */
@@ -216,16 +249,16 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve season data from the API using endpoint "/seasons/seasonId".
+     * Retrieve season data from the API using endpoint "season".
      *
-     * This function retrieves information about seasons from the API based on the specified
-     * required and optional query parameters.
+     * URL: "https://statsapi.mlb.com/api/{ver}/seasons/{seasonId}"
      * @param seasonRequiredQueryParams Required query parameters for the request.
      * @param seasonOptionalQueryParams Optional query parameters for the request.
      * @return Season data response.
      */
     override fun getSeasonResponse(
-        seasonRequiredQueryParams: SeasonRequiredQueryParams, seasonOptionalQueryParams: SeasonOptionalQueryParams
+        seasonRequiredQueryParams: SeasonRequiredQueryParams,
+        seasonOptionalQueryParams: SeasonOptionalQueryParams
     ): SeasonResponse {
         val endpoint =
             buildEndpointWithQueryParams("seasons", seasonRequiredQueryParams.plus(seasonOptionalQueryParams))
@@ -234,38 +267,33 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve umpires job data from the API using endpoint "/jobs/umpires".
-     * @param jobsUmpiresOptionalQueryParams Optional query parameters for the request.
-     * @return Umpires job response data.
+     * Retrieve sports data from the API using endpoint "sports"
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/sports"
+     * @param sportsOptionalQueryParams Optional query parameters for the request.
+     * @return Sports response data.
      */
-    override fun getJobsUmpiresResponse(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams): JobsUmpiresResponse {
-        val endpoint = buildEndpointWithQueryParams("jobs/umpires", jobsUmpiresOptionalQueryParams.toMap())
-        return fetchDataFromApi(endpoint)
+    override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
+        val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
+        return fetchDataFromApi<SportsResponse>(endpoint)
     }
 
     /**
-     * Retrieve datacasters job data from the API using endpoint "/jobs/datacasters".
-     * @param jobsDatacastersOptionalQueryParams Optional query parameters for the request.
-     * @return Datacasters job response data.
+     * Retrieve teams data from the API using endpoint "teams".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams"
+     * @param teamsOptionalQueryParams Optional query parameters for the request.
+     * @return Teams response data.
      */
-    override fun getJobsDatacastersResponse(jobsDatacastersOptionalQueryParams: JobsDatacastersOptionalQueryParams): JobsDatacastersResponse {
-        val endpoint = buildEndpointWithQueryParams("jobs/datacasters", jobsDatacastersOptionalQueryParams.toMap())
-        return fetchDataFromApi(endpoint)
+    override fun getTeamsResponse(teamsOptionalQueryParams: TeamsOptionalQueryParams): TeamsResponse {
+        val endpoint = buildEndpointWithQueryParams("teams", teamsOptionalQueryParams.toMap())
+        return fetchDataFromApi<TeamsResponse>(endpoint)
     }
 
     /**
-     * Retrieve official scorers job data from the API using endpoint "/jobs/officialScorers".
-     * @param jobsOfficialScorersOptionalQueryParams Optional query parameters for the request.
-     * @return Official scorers job response data.
-     */
-    override fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
-        val endpoint =
-            buildEndpointWithQueryParams("jobs/officialScorers", jobsOfficialScorersOptionalQueryParams.toMap())
-        return fetchDataFromApi(endpoint)
-    }
-
-    /**
-     * Retrieve team history data from the API using endpoint "/teams/history".
+     * Retrieve team history data from the API using endpoint "teams_history".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/history"
      * @param teamsHistoryRequiredQueryParams Required query parameters for the request.
      * @param teamsOptionalQueryParams Optional query parameters for the request.
      * @return Team history data response.
@@ -281,7 +309,9 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve team affiliates data from the API using endpoint "/teams/affiliates".
+     * Retrieve team affiliates data from the API using endpoint "teams_affiliates".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/affiliates"
      * @param teamsAffiliatesRequiredQueryParams Required query parameters for the request.
      * @param teamsAffiliatesOptionalQueryParams Optional query parameters for the request.
      * @return Team affiliates data response.
