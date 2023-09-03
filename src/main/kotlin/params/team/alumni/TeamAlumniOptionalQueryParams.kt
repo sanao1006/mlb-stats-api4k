@@ -1,6 +1,6 @@
-package params.teams.alumni
+package params.team.alumni
 
-data class TeamsAlumniOptionalQueryParams(
+data class TeamAlumniOptionalQueryParams(
     val ver: String? = "v1",
     val hydrate: String? = null,
     val fields: String? = null,

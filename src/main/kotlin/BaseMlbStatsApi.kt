@@ -23,6 +23,8 @@ import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
 import params.team.TeamOptionalQueryParams
 import params.team.TeamRequiredQueryParams
+import params.team.alumni.TeamAlumniOptionalQueryParams
+import params.team.alumni.TeamAlumniRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
@@ -42,6 +44,7 @@ import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
 import response.team.TeamResponse
+import response.team.alumni.TeamAlumniResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
@@ -340,6 +343,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     ): TeamResponse {
         val endpoint =
             buildEndpointWithQueryParams("teams/${teamRequiredQueryParams.teamId}", teamOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve alumni data for a specific team from the MLB Stats API using endpoint "team_alumni".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/alumni"
+     * @param teamAlumniRequiredQueryParams Required query parameters for the request.
+     * @param teamAlumniOptionalQueryParams Optional query parameters for the request.
+     * @return Alumni data response for the specified team.
+     */
+    override fun getTeamAlumniResponse(
+        teamAlumniRequiredQueryParams: TeamAlumniRequiredQueryParams,
+        teamAlumniOptionalQueryParams: TeamAlumniOptionalQueryParams
+    ): TeamAlumniResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/${teamAlumniRequiredQueryParams.teamId}/alumni",
+            teamAlumniRequiredQueryParams.plus(teamAlumniOptionalQueryParams)
+        )
         return fetchDataFromApi(endpoint)
     }
 }
