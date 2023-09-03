@@ -10,7 +10,7 @@ data class AttendanceRequiredQueryParams(
             "teamId" to teamId,
             "leagueId" to leagueId,
             "leagueListid" to leagueListid
-        ).plus(optionalParams.toMap().filterValues { it -> it != null })
+        ).plus(optionalParams.toMap())
     }
 }
 
