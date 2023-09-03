@@ -41,7 +41,7 @@ import response.teams.history.TeamsHistoryResponse
 
 interface MlbStatsApi {
     /**
-     * Endpoint `/attendance`
+     * Endpoint "attendance"
      */
     fun getAttendanceResponse(
         attendanceRequiredQueryParams: AttendanceRequiredQueryParams,
@@ -49,22 +49,22 @@ interface MlbStatsApi {
     ): AttendanceResponse
 
     /**
-     * Endpoint `/awards`
+     * Endpoint "awards"
      */
     fun getAwardsResponse(awardsOptionalQueryParams: AwardsOptionalQueryParams = AwardsOptionalQueryParams()): AwardsResponse
 
     /**
-     * Endpoint `/conferences`
+     * Endpoint "conferences"
      */
     fun getConferencesResponse(conferencesOptionalQueryParams: ConferencesOptionalQueryParams = ConferencesOptionalQueryParams()): ConferencesResponse
 
     /**
-     * Endpoint `/divisions`
+     * Endpoint "divisions"
      */
     fun getDivisionsResponse(divisionsOptionalQueryParams: DivisionsOptionalQueryParams = DivisionsOptionalQueryParams()): DivisionsResponse
 
     /**
-     * Endpoint `game/{gamePk}/feed/live`
+     * Endpoint "game"
      */
     fun getGameFeedResponse(
         gameFeedRequiredQueryParams: GameFeedRequiredQueryParams,
@@ -72,17 +72,17 @@ interface MlbStatsApi {
     ): GameResponse
 
     /**
-     * Endpoint `/sports`
+     * Endpoint "sports"
      */
     fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams = SportsOptionalQueryParams()): SportsResponse
 
     /**
-     * Endpoint `/teams`
+     * Endpoint "teams"
      */
     fun getTeamsResponse(teamsOptionalQueryParams: TeamsOptionalQueryParams = TeamsOptionalQueryParams()): TeamsResponse
 
     /**
-     * Endpoint "/schedule/games/tied"
+     * Endpoint "schedule_tied"
      */
     fun getScheduleTiedResponse(
         scheduleTiedRequiredQueryParams: ScheduleTiedRequiredQueryParams,
@@ -90,17 +90,17 @@ interface MlbStatsApi {
     ): ScheduleTiedResponse
 
     /**
-     * Endpoint `/schedule/postseason`
+     * Endpoint "schedule_postseason"
      */
     fun getSchedulePostseasonResponse(schedulePostseasonOptionalQueryParams: SchedulePostseasonOptionalQueryParams = SchedulePostseasonOptionalQueryParams()): SchedulePostseasonResponse
 
     /**
-     * Endpoint `/schedule/postseason/series`
+     * Endpoint "schedule_postseason_series"
      */
     fun getSchedulePostseasonSeriesResponse(schedulePostseasonSeriesOptionalQueryParams: SchedulePostseasonSeriesOptionalQueryParams = SchedulePostseasonSeriesOptionalQueryParams()): SchedulePostseasonSeriesResponse
 
     /**
-     * Endpoint `/seasons/seasonId`
+     * Endpoint "season"
      */
     fun getSeasonResponse(
         seasonRequiredQueryParams: SeasonRequiredQueryParams,
@@ -108,22 +108,22 @@ interface MlbStatsApi {
     ): SeasonResponse
 
     /**
-     * Endpoint `/jobs/umpires`
+     * Endpoint "jobs_umpires"
      */
     fun getJobsUmpiresResponse(jobsUmpiresOptionalQueryParams: JobsUmpiresOptionalQueryParams = JobsUmpiresOptionalQueryParams()): JobsUmpiresResponse
 
     /**
-     * Endpoint `/jobs/datacasters`
+     * Endpoint "jobs_datacasters"
      */
     fun getJobsDatacastersResponse(jobsDatacastersOptionalQueryParams: JobsDatacastersOptionalQueryParams = JobsDatacastersOptionalQueryParams()): JobsDatacastersResponse
 
     /**
-     * Endpoint `/jobs/officialScorers`
+     * Endpoint "jobs_officialScorers"
      */
     fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams = JobsOfficialScorersOptionalQueryParams()): JobsOfficialScorersResponse
 
     /**
-     * Endpoint "/teams/history"
+     * Endpoint "teams_history"
      */
     fun getTeamsHistoryResponse(
         teamsHistoryRequiredQueryParams: TeamsHistoryRequiredQueryParams,
@@ -131,7 +131,7 @@ interface MlbStatsApi {
     ): TeamsHistoryResponse
 
     /**
-     * Endpoint "/teams/affiliates"
+     * Endpoint "teams_affiliates"
      */
     fun getTeamsAffiliatesResponse(
         teamsAffiliatesRequiredQueryParams: TeamsAffiliatesRequiredQueryParams,
