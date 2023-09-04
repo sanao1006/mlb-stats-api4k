@@ -26,6 +26,8 @@ import params.team.coaches.TeamCoachesOptionalQueryParams
 import params.team.coaches.TeamCoachesRequiredQueryParams
 import params.team.leaders.TeamLeadersOptionalQueryParams
 import params.team.leaders.TeamLeadersRequiredQueryParams
+import params.team.roster.TeamRosterOptionalQueryParams
+import params.team.roster.TeamRosterRequiredQueryParams
 import params.teams.history.TeamsHistoryRequiredQueryParams
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
@@ -44,6 +46,7 @@ import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
 import response.team.coaches.TeamCoachesResponse
 import response.team.leaders.TeamLeadersResponse
+import response.team.roster.TeamRosterResponse
 import response.teams.TeamsResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
@@ -178,4 +181,12 @@ interface MlbStatsApi {
         teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
         teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams = TeamLeadersOptionalQueryParams()
     ): TeamLeadersResponse
+
+    /**
+     * Endpoint "team_roster"
+     */
+    fun getTeamRoster(
+        teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
+        teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams = TeamRosterOptionalQueryParams()
+    ): TeamRosterResponse
 }
