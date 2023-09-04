@@ -416,7 +416,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve team leaders data from the MLB Stats API.
+     * Retrieve team leaders data from the MLB Stats API using endpoint "team_leaders".
      *
      * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/leaders"
      * @param teamLeadersRequiredQueryParams Required query parameters for the request.
@@ -435,7 +435,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve team roster data from the MLB Stats API.
+     * Retrieve team roster data from the MLB Stats API using endpoint "tea,_roaster".
      *
      * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/roster"
      * @param teamRosterRequiredQueryParams Required query parameters for the request.
