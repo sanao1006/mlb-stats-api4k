@@ -156,8 +156,8 @@ interface MlbStatsApi {
      * Endpoint "team_alumni"
      */
     fun getTeamAlumniResponse(
-        teamsAlumniRequiredQueryParams: TeamAlumniRequiredQueryParams,
-        teamsAlumniOptionalQueryParams: TeamAlumniOptionalQueryParams = TeamAlumniOptionalQueryParams()
+        teamAlumniRequiredQueryParams: TeamAlumniRequiredQueryParams,
+        teamAlumniOptionalQueryParams: TeamAlumniOptionalQueryParams = TeamAlumniOptionalQueryParams()
     ): TeamAlumniResponse
 
     /**
