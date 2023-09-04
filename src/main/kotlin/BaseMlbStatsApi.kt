@@ -27,6 +27,8 @@ import params.team.alumni.TeamAlumniOptionalQueryParams
 import params.team.alumni.TeamAlumniRequiredQueryParams
 import params.team.coaches.TeamCoachesOptionalQueryParams
 import params.team.coaches.TeamCoachesRequiredQueryParams
+import params.team.leaders.TeamLeadersOptionalQueryParams
+import params.team.leaders.TeamLeadersRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
@@ -48,6 +50,7 @@ import response.season.SeasonResponse
 import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
 import response.team.coaches.TeamCoachesResponse
+import response.team.leaders.TeamLeadersResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
@@ -371,6 +374,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Retrieve coaching staff data for a specific team from the MLB Stats API using endpoint "team_coaches".
      *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/coaches"
      * @param teamCoachesRequiredQueryParams Required query parameters for the request.
      * @param teamCoachesOptionalQueryParams Optional query parameters for the request.
      * @return Coaching staff data response for the specified team.
@@ -382,6 +386,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "teams/${teamCoachesRequiredQueryParams.teamId}/coaches",
             teamCoachesOptionalQueryParams.toMap()
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve team leaders data from the MLB Stats API.
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/leaders"
+     * @param teamLeadersRequiredQueryParams Required query parameters for the request.
+     * @param teamLeadersOptionalQueryParams Optional query parameters for the request.
+     * @return Team leaders data response for the specified team.
+     */
+    override fun getTeamLeaders(
+        teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
+        teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams
+    ): TeamLeadersResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/${teamLeadersRequiredQueryParams.teamId}/leaders",
+            teamLeadersRequiredQueryParams.plus(teamLeadersOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
