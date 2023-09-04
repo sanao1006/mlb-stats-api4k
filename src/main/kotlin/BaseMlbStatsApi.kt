@@ -29,6 +29,8 @@ import params.team.coaches.TeamCoachesOptionalQueryParams
 import params.team.coaches.TeamCoachesRequiredQueryParams
 import params.team.leaders.TeamLeadersOptionalQueryParams
 import params.team.leaders.TeamLeadersRequiredQueryParams
+import params.team.roster.TeamRosterOptionalQueryParams
+import params.team.roster.TeamRosterRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
@@ -51,6 +53,7 @@ import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
 import response.team.coaches.TeamCoachesResponse
 import response.team.leaders.TeamLeadersResponse
+import response.team.roster.TeamRosterResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
@@ -406,6 +409,22 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
             "teams/${teamLeadersRequiredQueryParams.teamId}/leaders",
             teamLeadersRequiredQueryParams.plus(teamLeadersOptionalQueryParams)
         )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve team roster data from the MLB Stats API.
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/roster"
+     * @param teamRosterRequiredQueryParams Required query parameters for the request.
+     * @param teamRosterOptionalQueryParams Optional query parameters for the request.
+     * @return Team roster data response for the specified team.
+     */
+    override fun getTeamRoster(
+        teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
+        teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams
+    ): TeamRosterResponse {
+        val endpoint = buildEndpointWithQueryParams("teams/${teamRosterRequiredQueryParams.teamId}/roster", teamRosterOptionalQueryParams.toMap())
         return fetchDataFromApi(endpoint)
     }
 }
