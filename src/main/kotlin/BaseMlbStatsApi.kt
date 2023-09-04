@@ -25,6 +25,8 @@ import params.team.TeamOptionalQueryParams
 import params.team.TeamRequiredQueryParams
 import params.team.alumni.TeamAlumniOptionalQueryParams
 import params.team.alumni.TeamAlumniRequiredQueryParams
+import params.team.coaches.TeamCoachesOptionalQueryParams
+import params.team.coaches.TeamCoachesRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
@@ -45,6 +47,7 @@ import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
 import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
+import response.team.coaches.TeamCoachesResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
 
@@ -361,6 +364,24 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "teams/${teamAlumniRequiredQueryParams.teamId}/alumni",
             teamAlumniRequiredQueryParams.plus(teamAlumniOptionalQueryParams)
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve coaching staff data for a specific team from the MLB Stats API using endpoint "team_coaches".
+     *
+     * @param teamCoachesRequiredQueryParams Required query parameters for the request.
+     * @param teamCoachesOptionalQueryParams Optional query parameters for the request.
+     * @return Coaching staff data response for the specified team.
+     */
+    override fun getTeamCoaches(
+        teamCoachesRequiredQueryParams: TeamCoachesRequiredQueryParams,
+        teamCoachesOptionalQueryParams: TeamCoachesOptionalQueryParams
+    ): TeamCoachesResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/${teamCoachesRequiredQueryParams.teamId}/coaches",
+            teamCoachesOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
