@@ -374,6 +374,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     /**
      * Retrieve coaching staff data for a specific team from the MLB Stats API using endpoint "team_coaches".
      *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/coaches"
      * @param teamCoachesRequiredQueryParams Required query parameters for the request.
      * @param teamCoachesOptionalQueryParams Optional query parameters for the request.
      * @return Coaching staff data response for the specified team.
