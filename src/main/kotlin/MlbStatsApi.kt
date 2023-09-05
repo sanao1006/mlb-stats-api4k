@@ -15,6 +15,8 @@ import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.stats.StatsOptionalQueryParams
+import params.stats.StatsRequiredQueryParams
 import params.stats.leaders.StatsLeadersOptionalQueryParams
 import params.stats.leaders.StatsLeadersRequiredQueryParams
 import params.team.TeamOptionalQueryParams
@@ -44,6 +46,7 @@ import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
 import response.sports.SportsResponse
+import response.stats.StatsResponse
 import response.stats.leaders.StatsLeadersResponse
 import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
@@ -90,6 +93,14 @@ interface MlbStatsApi {
      * Endpoint "sports"
      */
     fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams = SportsOptionalQueryParams()): SportsResponse
+
+    /**
+     * Endpoint "stats"
+     */
+    fun getStatsResponse(
+        statsRequiredQueryParams: StatsRequiredQueryParams,
+        statsOptionalQueryParams: StatsOptionalQueryParams = StatsOptionalQueryParams()
+    ): StatsResponse
 
     /**
      * Endpoint "stats_leaders"

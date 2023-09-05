@@ -21,6 +21,8 @@ import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.stats.StatsOptionalQueryParams
+import params.stats.StatsRequiredQueryParams
 import params.stats.leaders.StatsLeadersOptionalQueryParams
 import params.stats.leaders.StatsLeadersRequiredQueryParams
 import params.team.TeamOptionalQueryParams
@@ -51,6 +53,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.stats.StatsResponse
 import response.stats.leaders.StatsLeadersResponse
 import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
@@ -280,7 +283,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         println(endpoint)
         return fetchDataFromApi(endpoint)
     }
-
+    
     /**
      * Retrieve sports data from the API using endpoint "sports"
      *
@@ -291,6 +294,22 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
         val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
         return fetchDataFromApi<SportsResponse>(endpoint)
+    }
+
+    /**
+     * Retrieve statistics data from the API using the "stats" endpoint.
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/stats"
+     * @param statsRequiredQueryParams Required query parameters for the request.
+     * @param statsOptionalQueryParams Optional query parameters for the request.
+     * @return Statistics data response.
+     */
+    override fun getStatsResponse(
+        statsRequiredQueryParams: StatsRequiredQueryParams,
+        statsOptionalQueryParams: StatsOptionalQueryParams
+    ): StatsResponse {
+        val endpoint = buildEndpointWithQueryParams("stats", statsRequiredQueryParams.plus(statsOptionalQueryParams))
+        return fetchDataFromApi(endpoint)
     }
 
     /**
