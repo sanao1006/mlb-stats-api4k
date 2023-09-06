@@ -39,6 +39,8 @@ import params.teams.TeamsOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesOptionalQueryParams
 import params.teams.affiliates.TeamsAffiliatesRequiredQueryParams
 import params.teams.history.TeamsHistoryRequiredQueryParams
+import params.venue.VenueOptionalQueryParams
+import params.venue.VenueRequiredQueryParams
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
 import response.divisions.DivisionsResponse
@@ -62,6 +64,7 @@ import response.team.leaders.TeamLeadersResponse
 import response.team.roster.TeamRosterResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
+import response.venue.VenueResponse
 
 open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     val client: HttpHandler = JavaHttpClient()
@@ -283,7 +286,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         println(endpoint)
         return fetchDataFromApi(endpoint)
     }
-    
+
     /**
      * Retrieve sports data from the API using endpoint "sports"
      *
@@ -469,6 +472,24 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
             "teams/${teamRosterRequiredQueryParams.teamId}/roster",
             teamRosterOptionalQueryParams.toMap()
         )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve venue data from the API using the "venue" endpoint.
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/venues"
+     * @param venueRequiredQueryParams Required query parameters for the request.
+     * @param venueOptionalQueryParams Optional query parameters for the request.
+     * @return Venue data response.
+     */
+    override fun getVenueResponse(
+        venueRequiredQueryParams: VenueRequiredQueryParams,
+        venueOptionalQueryParams: VenueOptionalQueryParams
+    ): VenueResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "venues",
+            venueRequiredQueryParams.plus(venueOptionalQueryParams))
         return fetchDataFromApi(endpoint)
     }
 }

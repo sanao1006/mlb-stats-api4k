@@ -33,6 +33,8 @@ import params.team.leaders.TeamLeadersRequiredQueryParams
 import params.team.roster.TeamRosterOptionalQueryParams
 import params.team.roster.TeamRosterRequiredQueryParams
 import params.teams.history.TeamsHistoryRequiredQueryParams
+import params.venue.VenueOptionalQueryParams
+import params.venue.VenueRequiredQueryParams
 import response.attendance.AttendanceResponse
 import response.awards.AwardsResponse
 import response.conferences.ConferencesResponse
@@ -56,6 +58,7 @@ import response.team.roster.TeamRosterResponse
 import response.teams.TeamsResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
+import response.venue.VenueResponse
 
 interface MlbStatsApi {
     /**
@@ -211,4 +214,12 @@ interface MlbStatsApi {
         teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
         teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams = TeamRosterOptionalQueryParams()
     ): TeamRosterResponse
+
+    /**
+     * Endpoint "venue"
+     */
+    fun getVenueResponse(
+        venueRequiredQueryParams: VenueRequiredQueryParams,
+        venueOptionalQueryParams: VenueOptionalQueryParams = VenueOptionalQueryParams()
+    ): VenueResponse
 }
