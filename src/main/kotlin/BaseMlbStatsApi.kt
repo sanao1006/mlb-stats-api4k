@@ -16,6 +16,8 @@ import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.person.PersonOptionalQueryParams
 import params.person.PersonRequiredQueryParams
+import params.person.stats.PersonStatsOptionalQueryParams
+import params.person.stats.PersonStatsRequiredQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.schedule.tied.ScheduleTiedOptionalQueryParams
@@ -54,6 +56,7 @@ import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.person.PersonResponse
+import response.person.stats.PersonStatsResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
@@ -242,6 +245,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "people/${personRequiredQueryParams.personId}",
             personOptionalQueryParams.toMap()
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve game-specific statistics for a person from the MLB Stats API using endpoint "person_stats".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/people/{personId}/stats/game/{gamePk}"
+     * @param personStatsRequiredQueryParams Required query parameters for the request.
+     * @param personStatsOptionalQueryParams Optional query parameters for the request.
+     * @return Game-specific statistics for the specified person.
+     */
+    override fun getPersonStatsResponse(
+        personStatsRequiredQueryParams: PersonStatsRequiredQueryParams,
+        personStatsOptionalQueryParams: PersonStatsOptionalQueryParams
+    ): PersonStatsResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "people/${personStatsRequiredQueryParams.personId}/stats/game/${personStatsRequiredQueryParams.gamePk}",
+            personStatsOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
