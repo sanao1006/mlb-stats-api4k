@@ -8,6 +8,8 @@ import params.game.GameFeedRequiredQueryParams
 import params.jobs.datacasters.JobsDatacastersOptionalQueryParams
 import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
+import params.person.PersonOptionalQueryParams
+import params.person.PersonRequiredQueryParams
 import params.schedule.postseason.SchedulePostseasonOptionalQueryParams
 import params.schedule.postseason.series.SchedulePostseasonSeriesOptionalQueryParams
 import params.schedule.tied.ScheduleTiedOptionalQueryParams
@@ -43,6 +45,7 @@ import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
+import response.person.PersonResponse
 import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
@@ -91,6 +94,14 @@ interface MlbStatsApi {
         gameFeedRequiredQueryParams: GameFeedRequiredQueryParams,
         gameFeedOptionalQueryParams: GameFeedOptionalQueryParams = GameFeedOptionalQueryParams()
     ): GameResponse
+
+    /**
+     * Endpoint "person"
+     */
+    fun getPersonResponse(
+        personRequiredQueryParams: PersonRequiredQueryParams,
+        personOptionalQueryParams: PersonOptionalQueryParams = PersonOptionalQueryParams()
+    ): PersonResponse
 
     /**
      * Endpoint "sports"
