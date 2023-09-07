@@ -234,7 +234,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     }
 
     /**
-     * Retrieve information about people (e.g., players, coaches, staff) from the MLB Stats API.
+     * Retrieve information about people (e.g., players, coaches, staff) from the MLB Stats API using endpoint "people".
      *
      * URL: "https://statsapi.mlb.com/api/{ver}/people"
      * @param peopleRequiredQueryParams Required query parameters for the request.
