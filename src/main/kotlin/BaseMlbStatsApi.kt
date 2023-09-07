@@ -14,6 +14,8 @@ import params.game.GameFeedRequiredQueryParams
 import params.jobs.datacasters.JobsDatacastersOptionalQueryParams
 import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
+import params.people.PeopleOptionalQueryParams
+import params.people.PeopleRequiredQueryParams
 import params.person.PersonOptionalQueryParams
 import params.person.PersonRequiredQueryParams
 import params.person.stats.PersonStatsOptionalQueryParams
@@ -55,6 +57,7 @@ import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
+import response.pepple.PeopleResponse
 import response.person.PersonResponse
 import response.person.stats.PersonStatsResponse
 import response.schedule.postseason.SchedulePostseasonResponse
@@ -227,6 +230,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getJobsOfficialScorersResponse(jobsOfficialScorersOptionalQueryParams: JobsOfficialScorersOptionalQueryParams): JobsOfficialScorersResponse {
         val endpoint =
             buildEndpointWithQueryParams("jobs/officialScorers", jobsOfficialScorersOptionalQueryParams.toMap())
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve information about people (e.g., players, coaches, staff) from the MLB Stats API using endpoint "people".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/people"
+     * @param peopleRequiredQueryParams Required query parameters for the request.
+     * @param peopleOptionalQueryParams Optional query parameters for the request.
+     * @return Information about people based on the specified query parameters.
+     */
+    override fun getPeopleResponse(
+        peopleRequiredQueryParams: PeopleRequiredQueryParams,
+        peopleOptionalQueryParams: PeopleOptionalQueryParams
+    ): PeopleResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "people",
+            peopleRequiredQueryParams.plus(peopleOptionalQueryParams)
+        )
         return fetchDataFromApi(endpoint)
     }
 
