@@ -27,6 +27,8 @@ import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.standings.StandingsOptionalQueryParams
+import params.standings.StandingsRequiredQueryParams
 import params.stats.StatsOptionalQueryParams
 import params.stats.StatsRequiredQueryParams
 import params.stats.leaders.StatsLeadersOptionalQueryParams
@@ -66,6 +68,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.standings.StandingsResponse
 import response.stats.StatsResponse
 import response.stats.leaders.StatsLeadersResponse
 import response.team.TeamResponse
@@ -366,6 +369,23 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
         val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
         return fetchDataFromApi<SportsResponse>(endpoint)
+    }
+
+    /**
+     * Retrieve MLB standings information from the MLB Stats API using endpoint "standings".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/standings"
+     * @param standingsRequiredQueryParams Required query parameters for the request.
+     * @param standingsOptionalQueryParams Optional query parameters for the request.
+     * @return Standings information for MLB teams based on the query parameters.
+     */
+    override fun getStandingsResponse(
+        standingsRequiredQueryParams: StandingsRequiredQueryParams,
+        standingsOptionalQueryParams: StandingsOptionalQueryParams
+    ): StandingsResponse {
+        val endpoint =
+            buildEndpointWithQueryParams("standings", standingsRequiredQueryParams.plus(standingsOptionalQueryParams))
+        return fetchDataFromApi(endpoint)
     }
 
     /**
