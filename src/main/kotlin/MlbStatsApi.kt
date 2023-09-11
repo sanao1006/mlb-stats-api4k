@@ -230,7 +230,7 @@ interface MlbStatsApi {
     /**
      * Endpoint "team_coaches"
      */
-    fun getTeamCoaches(
+    fun getTeamCoachesResponse(
         teamCoachesRequiredQueryParams: TeamCoachesRequiredQueryParams,
         teamCoachesOptionalQueryParams: TeamCoachesOptionalQueryParams = TeamCoachesOptionalQueryParams()
     ): TeamCoachesResponse
@@ -246,7 +246,7 @@ interface MlbStatsApi {
     /**
      * Endpoint "team_leaders"
      */
-    fun getTeamLeaders(
+    fun getTeamLeadersResponse(
         teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
         teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams = TeamLeadersOptionalQueryParams()
     ): TeamLeadersResponse
@@ -254,7 +254,7 @@ interface MlbStatsApi {
     /**
      * Endpoint "team_roster"
      */
-    fun getTeamRoster(
+    fun getTeamRosterResponse(
         teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
         teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams = TeamRosterOptionalQueryParams()
     ): TeamRosterResponse

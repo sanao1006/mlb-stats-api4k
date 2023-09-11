@@ -495,7 +495,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamCoachesOptionalQueryParams Optional query parameters for the request.
      * @return Coaching staff data response for the specified team.
      */
-    override fun getTeamCoaches(
+    override fun getTeamCoachesResponse(
         teamCoachesRequiredQueryParams: TeamCoachesRequiredQueryParams,
         teamCoachesOptionalQueryParams: TeamCoachesOptionalQueryParams
     ): TeamCoachesResponse {
@@ -533,7 +533,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamLeadersOptionalQueryParams Optional query parameters for the request.
      * @return Team leaders data response for the specified team.
      */
-    override fun getTeamLeaders(
+    override fun getTeamLeadersResponse(
         teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
         teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams
     ): TeamLeadersResponse {
@@ -552,7 +552,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamRosterOptionalQueryParams Optional query parameters for the request.
      * @return Team roster data response for the specified team.
      */
-    override fun getTeamRoster(
+    override fun getTeamRosterResponse(
         teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
         teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams
     ): TeamRosterResponse {
