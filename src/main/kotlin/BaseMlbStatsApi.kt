@@ -27,6 +27,8 @@ import params.schedule.tied.ScheduleTiedRequiredQueryParams
 import params.season.SeasonOptionalQueryParams
 import params.season.SeasonRequiredQueryParams
 import params.sports.SportsOptionalQueryParams
+import params.sports.players.SportsPlayersOptionalQueryParams
+import params.sports.players.SportsPlayersRequiredQueryParams
 import params.standings.StandingsOptionalQueryParams
 import params.standings.StandingsRequiredQueryParams
 import params.stats.StatsOptionalQueryParams
@@ -68,6 +70,7 @@ import response.schedule.postseason.SchedulePostseasonResponse
 import response.schedule.postseason.series.SchedulePostseasonSeriesResponse
 import response.schedule.tied.ScheduleTiedResponse
 import response.season.SeasonResponse
+import response.sports.players.SportsPlayersResponse
 import response.standings.StandingsResponse
 import response.stats.StatsResponse
 import response.stats.leaders.StatsLeadersResponse
@@ -369,6 +372,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
     override fun getSportsResponse(sportsOptionalQueryParams: SportsOptionalQueryParams): SportsResponse {
         val endpoint = buildEndpointWithQueryParams("sports", sportsOptionalQueryParams.toMap())
         return fetchDataFromApi<SportsResponse>(endpoint)
+    }
+
+    /**
+     * Retrieve player information for a specific sport from the MLB Stats API using endpoint "sports_players".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/sports/{sportId}/players"
+     * @param sportsPlayersRequiredQueryParams Required query parameters for the request.
+     * @param sportsPlayersOptionalQueryParams Optional query parameters for the request.
+     * @return Player information for the specified sport based on the query parameters.
+     */
+    override fun getSportsPlayersResponse(
+        sportsPlayersRequiredQueryParams: SportsPlayersRequiredQueryParams,
+        sportsPlayersOptionalQueryParams: SportsPlayersOptionalQueryParams
+    ): SportsPlayersResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "sports/${sportsPlayersRequiredQueryParams.sportId}/players",
+            sportsPlayersRequiredQueryParams.plus(sportsPlayersOptionalQueryParams)
+        )
+        return fetchDataFromApi(endpoint)
     }
 
     /**
