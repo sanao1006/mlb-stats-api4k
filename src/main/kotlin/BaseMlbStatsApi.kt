@@ -39,6 +39,8 @@ import params.team.coaches.TeamCoachesOptionalQueryParams
 import params.team.coaches.TeamCoachesRequiredQueryParams
 import params.team.leaders.TeamLeadersOptionalQueryParams
 import params.team.leaders.TeamLeadersRequiredQueryParams
+import params.team.personnel.TeamPersonnelOptionalQueryParams
+import params.team.personnel.TeamPersonnelRequiredQueryParams
 import params.team.roster.TeamRosterOptionalQueryParams
 import params.team.roster.TeamRosterRequiredQueryParams
 import params.teams.TeamsOptionalQueryParams
@@ -70,6 +72,7 @@ import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
 import response.team.coaches.TeamCoachesResponse
 import response.team.leaders.TeamLeadersResponse
+import response.team.personnel.TeamPersonnelResponse
 import response.team.roster.TeamRosterResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
 import response.teams.history.TeamsHistoryResponse
@@ -492,13 +495,32 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamCoachesOptionalQueryParams Optional query parameters for the request.
      * @return Coaching staff data response for the specified team.
      */
-    override fun getTeamCoaches(
+    override fun getTeamCoachesResponse(
         teamCoachesRequiredQueryParams: TeamCoachesRequiredQueryParams,
         teamCoachesOptionalQueryParams: TeamCoachesOptionalQueryParams
     ): TeamCoachesResponse {
         val endpoint = buildEndpointWithQueryParams(
             "teams/${teamCoachesRequiredQueryParams.teamId}/coaches",
             teamCoachesOptionalQueryParams.toMap()
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve personnel information for a specific MLB team from the MLB Stats API using endpoint "team_personnel".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/teams/{teamId}/personnel"
+     * @param teamPersonnelRequiredQueryParams Required query parameters for the request.
+     * @param teamPersonnelOptionalQueryParams Optional query parameters for the request.
+     * @return Personnel information for the specified MLB team based on the query parameters.
+     */
+    override fun getTeamPersonnelResponse(
+        teamPersonnelRequiredQueryParams: TeamPersonnelRequiredQueryParams,
+        teamPersonnelOptionalQueryParams: TeamPersonnelOptionalQueryParams
+    ): TeamPersonnelResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "teams/${teamPersonnelRequiredQueryParams.teamId}/personnel",
+            teamPersonnelOptionalQueryParams.toMap()
         )
         return fetchDataFromApi(endpoint)
     }
@@ -511,7 +533,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamLeadersOptionalQueryParams Optional query parameters for the request.
      * @return Team leaders data response for the specified team.
      */
-    override fun getTeamLeaders(
+    override fun getTeamLeadersResponse(
         teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
         teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams
     ): TeamLeadersResponse {
@@ -530,7 +552,7 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
      * @param teamRosterOptionalQueryParams Optional query parameters for the request.
      * @return Team roster data response for the specified team.
      */
-    override fun getTeamRoster(
+    override fun getTeamRosterResponse(
         teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
         teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams
     ): TeamRosterResponse {

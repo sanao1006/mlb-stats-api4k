@@ -36,6 +36,8 @@ import params.team.coaches.TeamCoachesOptionalQueryParams
 import params.team.coaches.TeamCoachesRequiredQueryParams
 import params.team.leaders.TeamLeadersOptionalQueryParams
 import params.team.leaders.TeamLeadersRequiredQueryParams
+import params.team.personnel.TeamPersonnelOptionalQueryParams
+import params.team.personnel.TeamPersonnelRequiredQueryParams
 import params.team.roster.TeamRosterOptionalQueryParams
 import params.team.roster.TeamRosterRequiredQueryParams
 import params.teams.history.TeamsHistoryRequiredQueryParams
@@ -63,6 +65,7 @@ import response.team.TeamResponse
 import response.team.alumni.TeamAlumniResponse
 import response.team.coaches.TeamCoachesResponse
 import response.team.leaders.TeamLeadersResponse
+import response.team.personnel.TeamPersonnelResponse
 import response.team.roster.TeamRosterResponse
 import response.teams.TeamsResponse
 import response.teams.affiliates.TeamsAffiliatesResponse
@@ -227,15 +230,23 @@ interface MlbStatsApi {
     /**
      * Endpoint "team_coaches"
      */
-    fun getTeamCoaches(
+    fun getTeamCoachesResponse(
         teamCoachesRequiredQueryParams: TeamCoachesRequiredQueryParams,
         teamCoachesOptionalQueryParams: TeamCoachesOptionalQueryParams = TeamCoachesOptionalQueryParams()
     ): TeamCoachesResponse
 
     /**
+     * Endpoint "team_personnel"
+     */
+    fun getTeamPersonnelResponse(
+        teamPersonnelRequiredQueryParams: TeamPersonnelRequiredQueryParams,
+        teamPersonnelOptionalQueryParams: TeamPersonnelOptionalQueryParams = TeamPersonnelOptionalQueryParams()
+    ): TeamPersonnelResponse
+
+    /**
      * Endpoint "team_leaders"
      */
-    fun getTeamLeaders(
+    fun getTeamLeadersResponse(
         teamLeadersRequiredQueryParams: TeamLeadersRequiredQueryParams,
         teamLeadersOptionalQueryParams: TeamLeadersOptionalQueryParams = TeamLeadersOptionalQueryParams()
     ): TeamLeadersResponse
@@ -243,7 +254,7 @@ interface MlbStatsApi {
     /**
      * Endpoint "team_roster"
      */
-    fun getTeamRoster(
+    fun getTeamRosterResponse(
         teamRosterRequiredQueryParams: TeamRosterRequiredQueryParams,
         teamRosterOptionalQueryParams: TeamRosterOptionalQueryParams = TeamRosterOptionalQueryParams()
     ): TeamRosterResponse
