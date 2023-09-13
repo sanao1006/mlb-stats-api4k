@@ -1,4 +1,4 @@
-package response.pepple
+package response.people.changes
 
 
 import com.squareup.moshi.Json
@@ -7,11 +7,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PrimaryPosition(
     @Json(name = "abbreviation")
-    val abbreviation: String, // TWP
+    val abbreviation: String, // SS
     @Json(name = "code")
-    val code: String, // Y
+    val code: String, // 6
     @Json(name = "name")
-    val name: String, // Two-Way Player
+    val name: String, // Shortstop
     @Json(name = "type")
-    val type: String // Two-Way Player
+    val type: String // Infielder
 )
