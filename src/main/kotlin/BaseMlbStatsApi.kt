@@ -16,6 +16,8 @@ import params.jobs.officialScorers.JobsOfficialScorersOptionalQueryParams
 import params.jobs.umpires.JobsUmpiresOptionalQueryParams
 import params.people.PeopleOptionalQueryParams
 import params.people.PeopleRequiredQueryParams
+import params.people.changes.PeopleChangesOptionalQueryParams
+import params.people.changes.PeopleChangesRequiredQueryParams
 import params.person.PersonOptionalQueryParams
 import params.person.PersonRequiredQueryParams
 import params.person.stats.PersonStatsOptionalQueryParams
@@ -64,6 +66,7 @@ import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
 import response.people.PeopleResponse
+import response.people.changes.PeopleChangesResponse
 import response.person.PersonResponse
 import response.person.stats.PersonStatsResponse
 import response.schedule.postseason.SchedulePostseasonResponse
@@ -257,6 +260,25 @@ open class BaseMlbStatsApi(private val apiHost: String) : MlbStatsApi {
         val endpoint = buildEndpointWithQueryParams(
             "people",
             peopleRequiredQueryParams.plus(peopleOptionalQueryParams)
+        )
+        return fetchDataFromApi(endpoint)
+    }
+
+    /**
+     * Retrieve changes in people data from the MLB Stats API using endpoint "people_changes".
+     *
+     * URL: "https://statsapi.mlb.com/api/{ver}/people/changes"
+     * @param peopleChangesRequiredQueryParams Required query parameters for the request.
+     * @param peopleChangesOptionalQueryParams Optional query parameters for the request.
+     * @return Changes in people data based on the specified query parameters.
+     */
+    override fun getPeopleChangesResponse(
+        peopleChangesRequiredQueryParams: PeopleChangesRequiredQueryParams,
+        peopleChangesOptionalQueryParams: PeopleChangesOptionalQueryParams
+    ): PeopleChangesResponse {
+        val endpoint = buildEndpointWithQueryParams(
+            "people/changes",
+            peopleChangesRequiredQueryParams.plus(peopleChangesOptionalQueryParams)
         )
         return fetchDataFromApi(endpoint)
     }
