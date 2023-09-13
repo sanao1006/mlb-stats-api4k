@@ -1,4 +1,4 @@
-package response.pepple
+package response.people
 
 
 import com.squareup.moshi.Json

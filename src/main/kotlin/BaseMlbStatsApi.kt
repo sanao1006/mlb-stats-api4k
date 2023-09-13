@@ -63,7 +63,7 @@ import response.game.GameResponse
 import response.jobs.datacasters.JobsDatacastersResponse
 import response.jobs.officialScorers.JobsOfficialScorersResponse
 import response.jobs.umpires.JobsUmpiresResponse
-import response.pepple.PeopleResponse
+import response.people.PeopleResponse
 import response.person.PersonResponse
 import response.person.stats.PersonStatsResponse
 import response.schedule.postseason.SchedulePostseasonResponse
